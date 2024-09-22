@@ -5,6 +5,7 @@
 double deal();
 int print(double num1, double num2, char fuhao);
 double function(double num1, double num2, char fuhao);
+double function_test(double num1, double num2, char fuhao);
 
 int main() {
     double output;
@@ -33,11 +34,11 @@ int main() {
 
 double deal() {
     double num1, num2, calculate_output;
-    char fuhao, valid_fuhao[] = "+-*/^sct";
+    char fuhao, valid_fuhao[] = "+-*/^sctegn";
 
     printf("请输入计算式：");
     scanf("%lf %c %lf", &num1, &fuhao, &num2);
-    while (strchr(valid_fuhao, fuhao) == NULL || num2 == 0 && fuhao == '/') {
+        while (strchr(valid_fuhao, fuhao) == NULL || num2 == 0 && fuhao == '/') {
         if (strchr(valid_fuhao, fuhao) == NULL) {
             printf("运算符输入有误, 请重新输入计算式: \n");
             scanf("%lf %c %lf", &num1, &fuhao, &num2);
@@ -51,9 +52,11 @@ double deal() {
             exit(0);
         }
     }
+
     calculate_output = function(num1, num2, fuhao);
     print(num1, num2, fuhao);
     return (calculate_output);
+    system("pause");
 }
 
 double function(double num1, double num2, char fuhao) {
@@ -74,6 +77,12 @@ double function(double num1, double num2, char fuhao) {
             return (cos(num1));
         case 't':
             return (tan(num1));
+        case 'e':
+            return (exp(num1));
+        case 'g':
+            return (log10(num1));
+        case 'n':
+            return (log(num1));
         default:
             printf("ERROR!\n");
             break;
@@ -83,7 +92,7 @@ double function(double num1, double num2, char fuhao) {
 
 int print(double num1, double num2, char fuhao) {
     char sanjiao[] = "sct";
-    if (strchr(sanjiao, fuhao) == NULL) {
+    if (strchr(sanjiao, fuhao) == NULL && fuhao != 'e' && fuhao != 'n' && fuhao != 'g') {
         if (num1 == floor(num1) && num2 == floor(num2)) {
             printf("%.0lf %c %.0lf = ", num1, fuhao, num2);
         }
@@ -118,6 +127,30 @@ int print(double num1, double num2, char fuhao) {
             }
             else if (fuhao = 't') {
                 printf("tan(%lf) = ", num1);
+            }
+        }
+    }
+    else if (fuhao == 'e' || fuhao == 'g' || fuhao == 'n') {
+        if (num1 == floor(num1)) {
+            if (fuhao == 'e') {
+                printf("e^(%.0lf) = ", num1);
+            }
+            else if (fuhao == 'g') {
+                printf("lg(%.0lf) = ", num1);
+            }
+            else if (fuhao == 'n') {
+                printf("ln(%.0lf) = ", num1);
+            }
+        } 
+        else if (num1 != floor(num1)) {
+            if (fuhao == 'e') {
+                printf("e^(%lf) = ", num1);
+            }
+            else if (fuhao == 'g') {
+                printf("lg(%lf) = ", num1);
+            }
+            else if (fuhao == 'n') {
+                printf("ln(%lf) = ", num1);
             }
         }
     }
