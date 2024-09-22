@@ -3,10 +3,12 @@
 #include <windows.h>
 
 double deal();
+int print(double num1, double num2, char fuhao);
+float function(double num1, double num2, char fuhao);
 
 int main() {
     SetConsoleOutputCP(CP_UTF8);
-    
+
     double output;
     int i;
 
@@ -32,12 +34,14 @@ int main() {
 }
 
 double deal() {
-
-    double num1 = 0, num2 = 0, deal = 0;
-    char fuhao = ' ', valid_fuhao[] = "+-*/^sct", sanjiao[] = "sct";
+    double num1, num2, calculate_output;
+    char fuhao, valid_fuhao[] = "+-*/^sct";
 
     printf("请输入计算式：");
     scanf("%lf %c %lf", &num1, &fuhao, &num2);
+
+    // 双符号输入错误无法识别！
+
     while (strchr(valid_fuhao, fuhao) == NULL || num2 == 0 && fuhao == '/') {
         if (strchr(valid_fuhao, fuhao) == NULL) {
             printf("运算符输入有误, 请重新输入计算式: \n");
@@ -52,37 +56,38 @@ double deal() {
             exit(0);
         }
     }
+    calculate_output = function(num1, num2, fuhao);
+    print(num1, num2, fuhao);
+    return (calculate_output);
+}
 
+float function(double num1, double num2, char fuhao) {
     switch (fuhao) {
         case '+':
-            deal = num1 + num2;
-            break;
+            return (num1 + num2);
         case '-':
-            deal = num1 - num2;
-            break;
+            return (num1 - num2);
         case '*':
-            deal = num1 * num2;
-            break;
+            return (num1 * num2);
         case '/':
-            deal = num1 / num2;
-            break;
+            return (num1 / num2);
         case '^':
-            deal = pow(num1, num2);
-            break;
+            return (pow(num1, num2));
         case 's':
-            deal = sin(num1);
-            break;
+            return (sin(num1));
         case 'c':
-            deal = cos(num1);
-            break;
+            return (cos(num1));
         case 't':
-            deal = tan(num1);
-            break;
+            return (tan(num1));
         default:
-            printf("输入错误！程序退出！\n");
+            printf("ERROR!\n");
             break;
     }
+    return 0;
+}
 
+int print(double num1, double num2, char fuhao) {
+    char sanjiao[] = "sct";
     if (strchr(sanjiao, fuhao) == NULL) {
         if (num1 == floor(num1) && num2 == floor(num2)) {
             printf("%.0lf %c %.0lf = ", num1, fuhao, num2);
@@ -121,6 +126,4 @@ double deal() {
             }
         }
     }
-
-    return (deal);
 }
