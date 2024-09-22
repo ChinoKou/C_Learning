@@ -5,28 +5,26 @@
 double deal();
 
 int main() {
-    SetConsoleOutputCP(CP_UTF8);
-    
     double output;
     int i;
 
     printf("=====================================================================\n");
-    printf("æ”¯æŒå››åˆ™è¿ç®—ï¼Œæ”¯æŒæŒ‡æ•°è¿ç®—ï¼Œæ”¯æŒä¸‰è§’å‡½æ•°è¿ç®—ï¼\n");
-    printf("è¯·æŒ‰ä»¥ä¸‹æ ¼å¼è¾“å…¥è®¡ç®—è¡¨è¾¾å¼ï¼\n");
-    printf("å¦‚ï¼šâ€œ2 + 3â€, æ±‚3çš„sinå€¼ï¼šâ€œ3 sâ€, æ±‚3çš„coså€¼ï¼šâ€œ3 câ€ \n");
+    printf("Ö§³ÖËÄÔòÔËËã£¬Ö§³ÖÖ¸ÊıÔËËã£¬Ö§³ÖÈı½Çº¯ÊıÔËËã£¡\n");
+    printf("Çë°´ÒÔÏÂ¸ñÊ½ÊäÈë¼ÆËã±í´ïÊ½£¡\n");
+    printf("Èç£º¡°2 + 3¡±, Çó3µÄsinÖµ£º¡°3 s¡±, Çó3µÄcosÖµ£º¡°3 c¡± \n");
     printf("=====================================================================\n");
     Sleep(2000);
     printf("\n");
 
     for (i = 1; ; i++) {
-        printf("------æ‰§è¡Œç¬¬ %d æ¬¡------\n", i);
+        printf("------Ö´ĞĞµÚ %d ´Î------\n", i);
         output = deal();
         if (output == floor(output)) {
             printf("%.0lf\n", output);
         }
         else if (output != floor(output)) {
             printf("%.2lf\n", output);
-            printf("è®¡ç®—ç»“æœå·²ç²¾ç¡®åˆ°å°æ•°ç‚¹åä¸¤ä½ï¼\n");
+            printf("¼ÆËã½á¹ûÒÑ¾«È·µ½Ğ¡ÊıµãºóÁ½Î»£¡\n");
         }
     }
 }
@@ -36,19 +34,19 @@ double deal() {
     double num1 = 0, num2 = 0, deal = 0;
     char fuhao = ' ', valid_fuhao[] = "+-*/^sct", sanjiao[] = "sct";
 
-    printf("è¯·è¾“å…¥è®¡ç®—å¼ï¼š");
+    printf("ÇëÊäÈë¼ÆËãÊ½£º");
     scanf("%lf %c %lf", &num1, &fuhao, &num2);
     while (strchr(valid_fuhao, fuhao) == NULL || num2 == 0 && fuhao == '/') {
         if (strchr(valid_fuhao, fuhao) == NULL) {
-            printf("è¿ç®—ç¬¦è¾“å…¥æœ‰è¯¯, è¯·é‡æ–°è¾“å…¥è®¡ç®—å¼: \n");
+            printf("ÔËËã·ûÊäÈëÓĞÎó, ÇëÖØĞÂÊäÈë¼ÆËãÊ½: \n");
             scanf("%lf %c %lf", &num1, &fuhao, &num2);
         }
         else if (num2 == 0 && fuhao == '/') {
-            printf("é™¤æ•°ä¸èƒ½ä¸º0, è¯·é‡æ–°è¾“å…¥è®¡ç®—å¼: \n");
+            printf("³ıÊı²»ÄÜÎª0, ÇëÖØĞÂÊäÈë¼ÆËãÊ½: \n");
             scanf("%lf %c %lf", &num1, &fuhao, &num2);
         }
         else {
-            printf("è¾“å…¥é”™è¯¯ï¼ç¨‹åºé€€å‡ºï¼\n");
+            printf("ÊäÈë´íÎó£¡³ÌĞòÍË³ö£¡\n");
             exit(0);
         }
     }
@@ -79,7 +77,7 @@ double deal() {
             deal = tan(num1);
             break;
         default:
-            printf("è¾“å…¥é”™è¯¯ï¼ç¨‹åºé€€å‡ºï¼\n");
+            printf("ÊäÈë´íÎó£¡³ÌĞòÍË³ö£¡\n");
             break;
     }
 
