@@ -4,7 +4,7 @@
 
 double deal();
 int print(double num1, double num2, char fuhao);
-float function(double num1, double num2, char fuhao);
+double function(double num1, double num2, char fuhao);
 
 int main() {
     double output;
@@ -32,9 +32,8 @@ int main() {
 }
 
 double deal() {
-
-    double num1 = 0, num2 = 0, calculate_output = 0;
-    char fuhao = ' ', valid_fuhao[] = "+-*/^sct";
+    double num1, num2, calculate_output;
+    char fuhao, valid_fuhao[] = "+-*/^sct";
 
     printf("«Î ‰»Îº∆À„ Ω£∫");
     scanf("%lf %c %lf", &num1, &fuhao, &num2);
@@ -57,7 +56,7 @@ double deal() {
     return (calculate_output);
 }
 
-float function(double num1, double num2, char fuhao) {
+double function(double num1, double num2, char fuhao) {
     switch (fuhao) {
         case '+':
             return (num1 + num2);
