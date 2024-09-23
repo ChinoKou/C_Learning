@@ -4,7 +4,6 @@
 
 int main(int argc, char *argv[])
 {
-    // 请在此输入您的代码
     int a, b, x;
     long long result = 1;
     int arr[4] = {0};
