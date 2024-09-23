@@ -6,7 +6,7 @@ int main(int argc, char *argv[])
 {
     // 请在此输入您的代码
     int a, b, x;
-    long long result;
+    long long result = 1;
     int arr[4] = {0};
     scanf("%d %d %d", &a, &b, &x);
     result = pow(a, b);
@@ -29,6 +29,16 @@ int main(int argc, char *argv[])
                 arr[0] = result % 10;
                 arr[1] = result / 10;
             }
+            if (arr[1] == 0) {
+                for (int i = 0; i < 1; i++) {
+                        printf("%d", arr[i]);
+                }
+            }
+            else if (arr[1] != 0) {
+                for (int i = 0; i < 2; i++) {
+                        printf("%d", arr[i]);
+                }
+            }
             break;
         case 3:
             if (numlen >= 4) {
@@ -40,6 +50,23 @@ int main(int argc, char *argv[])
                 arr[0] = result % 10;
                 arr[1] = result / 10 % 10;
                 arr[2] = result / 100; 
+            }
+            if (arr[2] == 0) {
+                if (arr[1] == 0) {
+                    for (int i = 0; i < 1; i++) {
+                        printf("%d", arr[i]);
+                    }
+                }
+                else if (arr[1] != 0) {
+                    for (int i = 0; i < 2; i++) {
+                        printf("%d", arr[i]);
+                    }
+                }
+            }
+            else if (arr[2] != 0) {
+                for (int i = 0; i < 3; i++) {
+                    printf("%d", arr[i]);
+                }
             }
             break;
         case 4:
@@ -55,13 +82,33 @@ int main(int argc, char *argv[])
                 arr[2] = result / 100 % 10;
                 arr[3] = result / 1000;
             }
+            if (arr[3] == 0) {
+                if (arr[2] == 0) {
+                    if (arr[1] == 0) {
+                        for (int i = 0; i < 1; i++) {
+                            printf("%d", arr[i]);
+                        }
+                    }
+                    else if (arr[1] != 0) {
+                        for (int i = 0; i < 2; i++) {
+                            printf("%d", arr[i]);
+                        }
+                    }
+                }
+                else if (arr[2] != 0) {
+                    for (int i = 0; i < 3; i++) {
+                        printf("%d", arr[i]);
+                    }
+                }
+            }
+            else if (arr[3] != 0) {
+                for (int i = 0; i < 4; i++) {
+                    printf("%d", arr[i]);
+                }
+            }
             break;
         default:
-            printf("error");
             break;
-    }
-    for (int i = x - 1; i >= 0; i--) {
-        printf("%d", arr[i]);
     }
     return 0;
 }
