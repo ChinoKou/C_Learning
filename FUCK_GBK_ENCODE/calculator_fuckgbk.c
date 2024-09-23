@@ -5,7 +5,6 @@
 double deal();
 int print(double num1, double num2, char fuhao);
 double function(double num1, double num2, char fuhao);
-double function_test(double num1, double num2, char fuhao);
 
 int main() {
     double output;
@@ -15,6 +14,7 @@ int main() {
     printf("支持四则运算，支持指数运算，支持三角函数运算！\n");
     printf("请按以下格式输入计算表达式！\n");
     printf("如: “2 + 3”, 求3的sin值: “3 s”, 求3的cos值: “3 c” \n");
+    printf("如: “3 ^ 2”, 求3的e值: “3 e 随便一个数”, 求2的lg\ln值: “3 g 随便一个数” \n");
     printf("=====================================================================\n");
     Sleep(2000);
     printf("\n");
@@ -54,9 +54,10 @@ double deal() {
     }
 
     calculate_output = function(num1, num2, fuhao);
+
     print(num1, num2, fuhao);
+
     return (calculate_output);
-    system("pause");
 }
 
 double function(double num1, double num2, char fuhao) {
@@ -87,11 +88,11 @@ double function(double num1, double num2, char fuhao) {
             printf("ERROR!\n");
             break;
     }
-    return 0;
 }
 
 int print(double num1, double num2, char fuhao) {
     char sanjiao[] = "sct";
+
     if (strchr(sanjiao, fuhao) == NULL && fuhao != 'e' && fuhao != 'n' && fuhao != 'g') {
         if (num1 == floor(num1) && num2 == floor(num2)) {
             printf("%.0lf %c %.0lf = ", num1, fuhao, num2);
