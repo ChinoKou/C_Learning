@@ -1,13 +1,13 @@
 #include <stdio.h>
 
 int main () {
-    int bei_chu_shu, chu_shu;
-    scanf("%d %d", &bei_chu_shu, &chu_shu);
-    int i = chu_shu, shang = 1;
-    while (i + chu_shu <= bei_chu_shu) {
-        i += chu_shu;
+    int a, b, shang = 1;
+    scanf("%d %d", &a, &b);
+    int i = b;
+    while (i + b <= a) {
+        i += b;
         shang += 1;
     }
-    printf("商为：%d, 余数为: %d", shang, (bei_chu_shu - i));
+    printf("商为：%d, 余数为: %d", shang, (a - i));
     return 0;
 }

@@ -6,10 +6,8 @@ int main(int argc, char *argv[]) {
     scanf("%d", &n);
     for (y = 1; y <= n; y++) {
         x = n - y;
-        if (x >= 1) {
-            if ((x & y) == 0) {
-                count += 1;
-            }
+        if (x >= 1 && (x & y) == 0) {
+            count += 1;
         }
     }
     printf("%d", count);
