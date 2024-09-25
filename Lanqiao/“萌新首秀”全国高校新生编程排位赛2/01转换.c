@@ -15,4 +15,5 @@ int main(int argc, char *argv[])
         arr[len - 1] = '0';
     }
     printf("%s", arr);
+    return 0;
 }
