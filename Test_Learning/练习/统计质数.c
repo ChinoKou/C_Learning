@@ -1,24 +1,18 @@
 #include <stdio.h>
 
-int is_prime(int n);
-
 int main () {
-    for (int i = 1; i <= 100; i++) {
-        if (is_prime(i)) {
-            printf("%d\n", i);
+    int num, count;
+    printf("请输入一个整数：");
+    scanf("%d", &num);
+    for (int i = 2; i < num; i++) {
+        if (num % i == 0) {
+            count ++;
         }
+    }
+    if (count == 0) {
+        printf("%d 是质数", num);
+    } else if (count > 0) {
+        printf("%d 不是质数", num);
     }
     return 0;
-}
-
-int is_prime(int n) {
-    if (n <= 1) {
-        return 0;
-    }
-    for (int i = 2; i * i <= n; i++) {
-        if (n % i == 0) {
-            return 0;
-        }
-    }
-    return 1;
 }
