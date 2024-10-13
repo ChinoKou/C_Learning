@@ -2,7 +2,7 @@
 int main(){
     int n,k,i,p,k1=0,j,k2;
     scanf("%d %d",&n,&k);
-    int all[n];
+    int all[1000];
     for(i=0;i<n;i++){
         scanf("%d ",&all[i]);
     }
