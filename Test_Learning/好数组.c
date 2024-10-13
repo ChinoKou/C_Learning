@@ -1,30 +1,23 @@
 ﻿#include <stdio.h>
-
-int is_hao(int arr[], int n);
-
-int main () {
-    int n, k, arr[1000] = {0};
-    scanf("%d %d", &n, &k);
-	for (int i = 0; i < n; i++) {
-		scanf("%d", &arr[i]);
-	}
-	if (is_hao(arr, n)) {
-		for (int i = 1; i <= k; i++) {
-			if (is_hao(arr, n) == 0) {}
-		}
-	}
+int main(){
+    int n,k,i,p,k1=0,j,k2;
+    scanf("%d %d",&n,&k);
+    int all[n];
+    for(i=0;i<n;i++){
+        scanf("%d ",&all[i]);
+    }
+    for(i=0;i<=n-k;i++){
+        p=0,k2=0;
+        for(j=0;j<k/2;j++){
+            if(all[i+p]!=all[i+k-1-p]){
+                k2++;
+            }
+            p++;
+        }
+        if(k2==1){
+            k1++;
+        }
+    }
+    printf("%d",k1);
     return 0;
-}
-
-int is_hao(int arr[], int n) {
-	int count = 0;
-	for (int i = 0; i < n / 2; i++) {
-		if (arr[i] != arr[n - i - 1]) {
-			count ++;
-		}
-	}
-	if (count == 1) {
-		return 1;
-	}
-	return 0;
 }
