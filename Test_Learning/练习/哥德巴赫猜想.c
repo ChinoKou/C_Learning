@@ -6,24 +6,25 @@
 
 int is_prime (int a);
 
-int main () {
+void main () {
     int N, x, y;
     scanf("%d", &N);
     for (int i = 4; i <= N; i += 2) {
-        for (x = 4; x <= i; x++) {
+        for (x = 2; x <= i / 2; x++) {
             y = i - x;
-
+            if (is_prime(x) + is_prime(y) == 0) {
+                printf("%d=%d+%d\n", i, x, y);
+                break;
+            }
         }
     }
-    return 0;
 }
 
 int is_prime (int a) {
-    int count = 0;
-    for (int i = 2; i <= a; i++) {
+    for (int i = 2; i < a; i++) {
         if (a % i == 0) {
-            return 0;
+            return 1;
         }
     }
-    return 1;
+    return 0;
 }
