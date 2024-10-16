@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void main () {
+int main () {
     int x, point;
     printf("请输入学生的百分制成绩:\n");
     scanf("%d", &x);
@@ -38,4 +38,5 @@ void main () {
         default:
             break;
     }
+    return 0;
 }

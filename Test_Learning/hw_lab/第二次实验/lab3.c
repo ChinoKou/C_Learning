@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void main () {
+int main () {
     int n, sum = 0, grade_a = 0, grade_b = 0, grade_c = 0, grade_d = 0, grade_e = 0;
     printf("请输入学生总人数<正整数>:");
     scanf("%d", &n);
@@ -26,6 +26,7 @@ void main () {
         }
     }
     double avg = (double)sum / n;
-    printf("平均分 = %lf\n", avg);
+    printf("平均分 = %.2lf\n", avg);
     printf("A级人数 = %d, B级人数 = %d, C级人数 = %d, D级人数 = %d, E级人数 = %d", grade_a, grade_b, grade_c, grade_d, grade_e);
+    return 0;
 }
