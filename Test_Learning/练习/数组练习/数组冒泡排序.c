@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-void main () {
+int main () {
     int arr[] = {0}, temp;
     srand(time(NULL));
     for (int i = 0; i < 20; i++) {
@@ -25,4 +25,5 @@ void main () {
     for (int i = 0; i < 20; i++) {
         printf("%d ", arr[i]);
     }
+    return 0;
 }

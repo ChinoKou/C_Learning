@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void main () {
+int main () {
     int arr[10] = {12, 485, 56, 2, 4, 645, 14, 58, 652, 178}, x, len;
     scanf("%d", &x);
     len = sizeof(arr) / sizeof(arr[0]);
@@ -10,4 +10,5 @@ void main () {
             break;
         }
     }
+    return 0;
 }

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-void main () {
+int main () {
     int arr[100000] = {0}, sum = 0, avg, count = 0, len;
     srand(time(NULL));
     for (int i = 0; i < 100000; i++) {
@@ -18,4 +18,5 @@ void main () {
         }
     }
     printf("\n数组所有数据和为: %d \n所有数据平均数为: %d \n有 %d 个数据比平均值小\n", sum, avg, count);
+    return 0;
 }

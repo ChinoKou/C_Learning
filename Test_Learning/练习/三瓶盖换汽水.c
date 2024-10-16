@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void main () {
+int main () {
     int n, used, still, count = 0;
     scanf("%d", &n);
     still = n;
@@ -11,4 +11,5 @@ void main () {
     }
     count += 1;
     printf("%d", count);
+    return 0;
 }

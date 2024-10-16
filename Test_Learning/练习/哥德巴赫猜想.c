@@ -6,7 +6,7 @@
 
 int is_prime (int a);
 
-void main () {
+int main () {
     int N, x, y;
     scanf("%d", &N);
     for (int i = 4; i <= N; i += 2) {
@@ -18,6 +18,7 @@ void main () {
             }
         }
     }
+    return 0;
 }
 
 int is_prime (int a) {
