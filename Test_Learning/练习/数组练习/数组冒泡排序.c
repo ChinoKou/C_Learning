@@ -3,33 +3,26 @@
 #include <time.h>
 
 void main () {
-    int arr[10] = {0}, temp, count = 0;
+    int arr[] = {0}, temp;
     srand(time(NULL));
-    for (int i = 0; i < 10; i++) {
-        arr[i] = rand() % 100 + 1;
+    for (int i = 0; i < 20; i++) {
+        arr[i] = rand() % 481 + 20;
     }
     printf("随机生成的数组：\n");
-    for (int i = 1; i < 10; i++) {
+    for (int i = 0; i < 20; i++) {
         printf("%d ", arr[i]);
     }
-    for (int i = 0; i < 9; i++) {
-        if (arr[i] <= arr[i + 1]) {
-            temp = arr[i];
-            arr[i] = arr[i + 1];
-            arr[i + 1] = temp;
-        }
-        count = 0;
-        for (int j = 0; j < 9; j++) {
-            if (arr[i] >= arr[i + 1]) {
-                count += 1;
+    for (int i = 0; i < 19; i++) {
+        for (int j = i; j < 19; j++) {
+            if (arr[i] < arr[j + 1]) {
+                temp = arr[i];
+                arr[i] = arr[j + 1];
+                arr[j + 1] = temp;
             }
-        }
-        if (count == 9) {
-            break;
         }
     }
     printf("\n冒泡排序后的数组: \n");
-    for (int i = 1; i < 10; i++) {
+    for (int i = 0; i < 20; i++) {
         printf("%d ", arr[i]);
     }
 }
