@@ -1,15 +1,13 @@
 #include <stdio.h>
 
 int main () {
-    int len, temp, sum, arr[5] = {0, 0, 0, 0, 0}, count = 0;
+    int sum, digit, count = 0;
     printf("1 - 10000 间的所有水仙花数: \n");
     for (int i = 1; i <= 10000; i++) {
-        temp = i;
         sum = 0;
-        for (int j = 0; temp >= 1; j++) {
-            arr[j] = temp % 10;
-            temp /= 10;
-            sum += arr[j] * arr[j] * arr[j];
+        for (int j = i; j >= 1; j /= 10) {
+            digit = j % 10;
+            sum += digit * digit * digit;
         }
         if (sum == i) {
             printf("%d\n", i);
