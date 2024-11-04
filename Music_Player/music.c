@@ -1,6 +1,3 @@
-#ifndef MIN
-#define MIN(a,b)            (((a) < (b)) ? (a) : (b))
-#endif
 #include <stdio.h>
 #include <io.h>
 #include <windows.h>
@@ -16,6 +13,7 @@
 #define CHARACTER "#"   // 在控制台用来显示图片的字符
 
 #pragma pack(1)
+
 typedef struct {
     unsigned char B, G, R;
 } Pixel, ColorBGR;
@@ -132,7 +130,7 @@ void playLyrics(LyricLine* lyrics, int lineNums) {
         }
         else if (i < 48) {
             j = i - 4;
-            end = MIN(end, lineNums);
+            end = end < lineNums ? end : lineNums;
         }
         for (; j < end; j++) {
             if (j == i)

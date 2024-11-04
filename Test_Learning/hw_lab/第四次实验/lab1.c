@@ -17,6 +17,11 @@ int main () {
             max = arr[i];
         }
     }
+    if (min == arr[n - 1]) {
+        temp = arr[0];
+        arr[0] = min;
+        arr[n - 1] = temp;
+    }
     for (int i = 0; i < n; i++) {
         if (min == arr[i]) {
             temp = arr[0];
