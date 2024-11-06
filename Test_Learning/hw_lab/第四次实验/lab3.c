@@ -1,8 +1,10 @@
 #include <stdio.h>
 
 int main () {
-    int n, a[6][6], max, min, temp, count = 0;
+    int n, a[6][6], max, min, temp;
+    printf("请输入一个正整数 n (1 <= n <= 6): ");
     scanf("%d", &n);
+    printf("请输入 %d 阶方阵的元素: ", n);
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             scanf("%d", &a[i][j]);
@@ -17,22 +19,18 @@ int main () {
             }
         }
     }
-    for (int i0 = 0; i0 < n; i0++) {
-        for (int j0 = 0; j0 < n; j0++) {
-            if (min == a[i0][j0] && !count) {
-                count++;
-                for (int i1 = 0; i1 < n; i1++) {
-                    for (int j1 = 0; j1 < n; j1++) {
-                        if (max == a[i1][j1]) {
-                            temp = a[i0][j0];
-                            a[i0][j0] = a[i1][j1];
-                            a[i1][j1] = temp;
-                            break;
-                        }
-                    }
-                }
+    printf("交换最大最小值后的 %d 阶方阵结果:\n", n);
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            if (min == a[i][j]) {
+                printf("%d ", max);
             }
-            printf("%d ", a[i0][j0]);
+            else if (max == a[i][j]) {
+                printf("%d ", min);
+            }
+            else {
+                printf("%d ", a[i][j]);
+            }
         }
         printf("\n");
     }
