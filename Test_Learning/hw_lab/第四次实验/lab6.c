@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void sort (int list[], int n);
+void sort (int* list, int n);
 
 int main () {
     int n, arr[10];
@@ -11,12 +11,22 @@ int main () {
         scanf("%d", &arr[i]);
     }
     sort(arr, n);
+    printf("进行升序排列后的数组: ");
     for (int i = 0; i < n; i++) {
-        printf("%d", arr[i]);
+        printf("%d ", arr[i]);
     }
     return 0;
 }
 
-void sort (int list[], int n) {
-
+void sort (int* list, int n) {
+    int temp;
+    for (int i = 0; i < n; i++) {
+        for (int j = i; j < n; j++) {
+            if (*(list + i) > *(list + j)) {
+                temp = *(list + i);
+                *(list + i) = *(list + j);
+                *(list + j) = temp;
+            } 
+        }
+    }
 }

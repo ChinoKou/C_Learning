@@ -31,14 +31,8 @@ int main () {
                     if (len < 4) arr[3] = 126;
                     for (arr[4] = 33; arr[4] <= 126; arr[4]++) {
                         if (len < 5) arr[4] = 126;
-                        guess[0] = arr[0];
-                        guess[1] = arr[1];
-                        guess[2] = arr[2];
-                        guess[3] = arr[3];
-                        guess[4] = arr[4];
-                        guess[5] = '\0';
-                        for (int i = 4; i > len - 1; i--) {
-                            guess[i] = '\0';
+                        for (int i = 0; i < len; i++) {
+                            guess[i] = arr[i];
                         }
                         printf("%s\n", guess);
                         if (!strcmp(guess, password)) {

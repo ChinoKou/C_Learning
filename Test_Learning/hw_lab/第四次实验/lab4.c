@@ -29,14 +29,9 @@ int main () {
                     printf("该 %d 阶方阵的鞍点下标为: %d, %d", n, i, j);
                     return 0;
                 }
-                else {
-                    count += 1;
-                }
             }
         }
     }
-    if (count == n) {
-        printf("NO");
-    }
+    printf("NO");
     return 0;
 }
