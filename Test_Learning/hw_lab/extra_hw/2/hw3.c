@@ -2,7 +2,7 @@
 
 int main () {
     int x, digit[2];
-    scanf("%d", x);
+    scanf("%d", &x);
     digit[0] = x % 100;
     digit[1] = x / 100;
     if (digit[1] >= 1 && digit[1] <= 3) {
