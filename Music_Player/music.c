@@ -63,7 +63,6 @@ BOOLEAN playMusic(const char* filePath) {
     return TRUE;
 }
 
-// 读取歌词文件数据
 BOOLEAN readLyricFile(const char* filePath, LyricLine** lyrics, int* lineNums) {
     FILE* fp;
     fopen_s(&fp, filePath, "r");

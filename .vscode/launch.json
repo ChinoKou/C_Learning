@@ -2,23 +2,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "(gdb) 启动",
+            "name": "gdb启动",
+            "preLaunchTask": "C/C++: gcc.exe 生成活动文件",
             "type": "cppdbg",
             "request": "launch",
-            "program": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-            "args": [
-                "-c",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe;",
-                "Write-Output `n;",
-                "cmd /c pause"
-            ],
+            "program": "${workspaceFolder}\\build\\${fileBasenameNoExtension}.exe",
+            "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
-            "externalConsole": true,
+            "externalConsole": false,
             "MIMode": "gdb",
             "miDebuggerPath": "C:\\Program Files\\MinGW\\bin\\gdb.exe",
-            "preLaunchTask": "C/C++: gcc.exe 生成活动文件",
             "setupCommands": [
                 {
                     "description": "为 gdb 启用整齐打印",
@@ -31,6 +26,48 @@
                     "ignoreFailures": true
                 }
             ]
+        },
+        {
+            "name": "gdb启动 (externalConsole)",
+            "preLaunchTask": "C/C++: gcc.exe 生成活动文件",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}\\build\\${fileBasenameNoExtension}.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "gdb",
+            "miDebuggerPath": "C:\\Program Files\\MinGW\\bin\\gdb.exe",
+            "setupCommands": [
+                {
+                    "description": "为 gdb 启用整齐打印",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "将反汇编风格设置为 Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "(Windows) 启动",
+            "preLaunchTask": "C/C++: gcc.exe 生成活动文件",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "args": [
+                "-c",
+                "${workspaceFolder}\\build\\${fileBasenameNoExtension}.exe;",
+                "Write-Output `n",
+            ],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "console": "externalTerminal"
         }
     ]
 }
