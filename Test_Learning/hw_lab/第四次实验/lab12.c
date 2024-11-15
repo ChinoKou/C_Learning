@@ -3,8 +3,8 @@
 typedef struct student {
     char name[100];
     int num;
-    int mark;
+    int marks;
 }stu;
 int main () {
-
+    stu ArrStu[10] = {};
 }
