@@ -19,7 +19,7 @@ int main () {
         scanf("%lf", &ArrStu[i].marks);
     }
     double avg = Static(ArrStu);
-    printf("平均成绩为: %lf", avg);
+    printf("平均成绩为: %.2lf", avg);
     return 0;
 }
 
