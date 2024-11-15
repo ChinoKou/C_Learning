@@ -16,7 +16,7 @@ int main () {
         printf("请输入第 %d 位学生的姓名: ", i + 1);
         scanf("%s", ArrStu[i].name);
         printf("请输入第 %d 位学生的分数: ", i + 1);
-        scanf("%lf", ArrStu[i].marks);
+        scanf("%lf", &ArrStu[i].marks);
     }
     double avg = Static(ArrStu);
     printf("平均成绩为: %lf", avg);
