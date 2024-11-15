@@ -56,7 +56,7 @@ double Static (stu ArrStu[]) {
     }
     printf("学生成绩排序如下: \n");
     for (int i = 0; i < 10; i++) {
-        printf("");
+        printf("%d %s %s %d\n", i, ArrStu[i].name, ArrStu[i].stu_num, ArrStu[i].marks);
     }
     for (int i = 0; i < 5; i++) {
         printf("成绩等级为 %c 的有 %d 位同学\n", char_grade[i], grade[i]);
