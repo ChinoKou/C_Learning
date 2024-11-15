@@ -13,7 +13,9 @@ int main () {
 int statistics (char arr[], char character) {
     int count = 0;
     for (int i = 0; arr[i] != '\0'; i++) {
-        count++;
+        if (arr[i] == character) {
+            count++;
+        }
     }
     return count;
 }
