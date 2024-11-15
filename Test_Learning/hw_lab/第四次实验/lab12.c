@@ -54,7 +54,7 @@ double Static (stu ArrStu[]) {
             }
         }
     }
-    printf("学生成绩排序如下: \n名次\t 姓名\t 学号\t 成绩\t\n");
+    printf("\n学生成绩排序如下: \n名次\t 姓名\t 学号\t 成绩\t\n");
     for (int i = 0; i < 10; i++) {
         printf("%d\t %s\t %s\t %.2lf\t\n", i + 1, ArrStu[i].name, ArrStu[i].stu_num, ArrStu[i].marks);
     }
