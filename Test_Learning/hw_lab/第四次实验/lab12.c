@@ -2,7 +2,7 @@
 
 typedef struct student {
     char name[100];
-    char stu_num;
+    char stu_num[10];
     double marks;
 }stu;
 
