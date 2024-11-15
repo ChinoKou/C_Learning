@@ -19,6 +19,7 @@ int main () {
         scanf("%lf", ArrStu[i].marks);
     }
     double avg = Static(ArrStu);
+    printf("平均成绩为: %lf", avg);
     return 0;
 }
 
@@ -53,12 +54,12 @@ double Static (stu ArrStu[]) {
             }
         }
     }
-    for (int i = 0; i < 5; i++) {
-        printf("成绩等级为 %c 的有 %d 位同学\n", char_grade[i], grade[i]);
-    }
     printf("学生成绩排序如下: \n");
     for (int i = 0; i < 10; i++) {
         printf("");
+    }
+    for (int i = 0; i < 5; i++) {
+        printf("成绩等级为 %c 的有 %d 位同学\n", char_grade[i], grade[i]);
     }
     return (sum / 10);
 }
