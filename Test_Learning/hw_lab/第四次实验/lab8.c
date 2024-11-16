@@ -13,8 +13,10 @@ int main () {
 
 void sort (char(*s)[100]) {
     for (int i = 0; i < 5; i++) {
-        if ((s + i)) {
-            
+        for (int j = i; i < 5; j++) {
+            if (*(s + i) < *(s + j)) {
+                
+            }
         }
     }
 }
