@@ -1,17 +1,17 @@
 #include <stdio.h>
 
+typedef struct{
+    char grade;
+    int order;
+    double scores;
+} mark;
+
 typedef struct {
     char name[100];
     char stu_num[10];
     int input_order;
     mark marks;
 } Stu;
-
-typedef struct{
-    char grade;
-    int order;
-    double scores;
-} mark;
 
 double Static (Stu ArrStu[]);
 
