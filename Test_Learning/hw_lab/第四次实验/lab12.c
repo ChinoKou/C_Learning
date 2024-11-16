@@ -3,8 +3,14 @@
 typedef struct {
     char name[100];
     char stu_num[10];
-    double marks;
+    struct mark marks;
 } Stu;
+
+struct mark{
+    char grade;
+    int order;
+    double scores;
+};
 
 double Static (Stu ArrStu[]);
 
@@ -16,7 +22,7 @@ int main () {
         printf("请输入第 %d 位学生的姓名: ", i + 1);
         scanf("%s", ArrStu[i].name);
         printf("请输入第 %d 位学生的分数: ", i + 1);
-        scanf("%lf", &ArrStu[i].marks);
+        scanf("%lf", &ArrStu[i].marks.scores);
     }
     double avg = Static(ArrStu);
     printf("平均成绩为: %.2lf", avg);
@@ -28,22 +34,22 @@ double Static (Stu ArrStu[]) {
     char char_grade[6] = "ABCDE";
     double sum = 0;
     for (int i = 0; i < 10; i++) {
-        if (ArrStu[i].marks >= 90) {
+        if (ArrStu[i].marks.scores >= 90) {
             grade[0]++;
         }
-        else if (ArrStu[i].marks >= 80 && ArrStu[i].marks < 90) {
+        else if (ArrStu[i].marks.scores >= 80 && ArrStu[i].marks.scores < 90) {
             grade[1]++;
         }
-        else if (ArrStu[i].marks >= 70 && ArrStu[i].marks < 80) {
+        else if (ArrStu[i].marks.scores >= 70 && ArrStu[i].marks.scores < 80) {
             grade[2]++;
         }
-        else if (ArrStu[i].marks >= 60 && ArrStu[i].marks < 70) {
+        else if (ArrStu[i].marks.scores >= 60 && ArrStu[i].marks.scores < 70) {
             grade[3]++;
         }
-        else if (ArrStu[i].marks >= 0 && ArrStu[i].marks < 60) {
+        else if (ArrStu[i].marks.scores >= 0 && ArrStu[i].marks.scores < 60) {
             grade[4]++;
         }
-        sum += ArrStu[i].marks;
+        sum += ArrStu[i].marks.scores;
     }
     for (int i = 0; i < 10; i++) {
         for (int j = i; j < 10; j++) {
@@ -53,6 +59,7 @@ double Static (Stu ArrStu[]) {
                 ArrStu[j] = temp;
             }
         }
+        
     }
     printf("\n学生成绩排序如下: \n名次\t 姓名\t 学号\t 成绩\t\n");
     for (int i = 0; i < 10; i++) {
