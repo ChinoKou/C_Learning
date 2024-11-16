@@ -69,7 +69,7 @@ double Static (Stu ArrStu[]) {
     }
     //根据原始排序还原顺序
     for (int i = 0; i < 10; i++) {
-        for (int j = i; j < 10; i++) {
+        for (int j = i; j < 10; j++) {
             if (ArrStu[i].input_order > ArrStu[j].input_order) {
                 Stu temp = ArrStu[i];
                 ArrStu[i] = ArrStu[j];
