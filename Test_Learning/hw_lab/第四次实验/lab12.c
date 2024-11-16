@@ -3,6 +3,7 @@
 typedef struct {
     char name[100];
     char stu_num[10];
+    int input_order;
     mark marks;
 } Stu;
 
@@ -55,6 +56,7 @@ double Static (Stu ArrStu[]) {
         }
         sum += ArrStu[i].marks.scores;
     }
+    //冒泡排序求学生成绩名次
     for (int i = 0; i < 10; i++) {
         for (int j = i; j < 10; j++) {
             if (ArrStu[i].marks.scores < ArrStu[j].marks.scores) {
@@ -65,12 +67,19 @@ double Static (Stu ArrStu[]) {
         }
         ArrStu[i].marks.order = i + 1;
     }
+    //根据原始排序还原顺序
     for (int i = 0; i < 10; i++) {
-        
+        for (int j = i; j < 10; i++) {
+            if (ArrStu[i].input_order > ArrStu[j].input_order) {
+                Stu temp = ArrStu[i];
+                ArrStu[i] = ArrStu[j];
+                ArrStu[j] = temp;
+            }
+        }
     }
-    printf("\n学生成绩排序如下: \n名次\t 姓名\t 学号\t 成绩\t\n");
+    printf("\n学生成绩排序如下: \n名次\t 姓名\t 学号\t 成绩\t 等级\t\n");
     for (int i = 0; i < 10; i++) {
-        printf("%d\t %s\t %s\t %.2lf\t\n", i + 1, ArrStu[i].name, ArrStu[i].stu_num, ArrStu[i].marks);
+        printf("%d\t %s\t %s\t %.2lf\t %c\t\n", i + 1, ArrStu[i].name, ArrStu[i].stu_num, ArrStu[i].marks.scores, ArrStu[i].marks.order);
     }
     return (sum / 10);
 }
