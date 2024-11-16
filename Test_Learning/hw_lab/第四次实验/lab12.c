@@ -30,43 +30,47 @@ int main () {
 }
 
 double Static (Stu ArrStu[]) {
-    int grade[5] = {0, 0, 0, 0, 0};
-    char char_grade[6] = "ABCDE";
+    int count_grade[5] = {0, 0, 0, 0, 0};
     double sum = 0;
     for (int i = 0; i < 10; i++) {
         if (ArrStu[i].marks.scores >= 90) {
-            grade[0]++;
+            ArrStu[i].marks.grade = 'A';
+            count_grade[0]++;
         }
         else if (ArrStu[i].marks.scores >= 80 && ArrStu[i].marks.scores < 90) {
-            grade[1]++;
+            ArrStu[i].marks.grade = 'B';
+            count_grade[1]++;
         }
         else if (ArrStu[i].marks.scores >= 70 && ArrStu[i].marks.scores < 80) {
-            grade[2]++;
+            ArrStu[i].marks.grade = 'C';
+            count_grade[2]++;
         }
         else if (ArrStu[i].marks.scores >= 60 && ArrStu[i].marks.scores < 70) {
-            grade[3]++;
+            ArrStu[i].marks.grade = 'D';
+            count_grade[3]++;
         }
         else if (ArrStu[i].marks.scores >= 0 && ArrStu[i].marks.scores < 60) {
-            grade[4]++;
+            ArrStu[i].marks.grade = 'E';
+            count_grade[4]++;
         }
         sum += ArrStu[i].marks.scores;
     }
     for (int i = 0; i < 10; i++) {
         for (int j = i; j < 10; j++) {
-            if (ArrStu[i].marks < ArrStu[j].marks) {
+            if (ArrStu[i].marks.scores < ArrStu[j].marks.scores) {
                 Stu temp = ArrStu[i];
                 ArrStu[i] = ArrStu[j];
                 ArrStu[j] = temp;
             }
         }
+        ArrStu[i].marks.order = i + 1;
+    }
+    for (int i = 0; i < 10; i++) {
         
     }
     printf("\n学生成绩排序如下: \n名次\t 姓名\t 学号\t 成绩\t\n");
     for (int i = 0; i < 10; i++) {
         printf("%d\t %s\t %s\t %.2lf\t\n", i + 1, ArrStu[i].name, ArrStu[i].stu_num, ArrStu[i].marks);
-    }
-    for (int i = 0; i < 5; i++) {
-        printf("成绩等级为 %c 的有 %d 位同学\n", char_grade[i], grade[i]);
     }
     return (sum / 10);
 }
