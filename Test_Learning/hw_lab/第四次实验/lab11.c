@@ -22,11 +22,5 @@ int main () {
 
 int FishNet (Date Fish) {
     Date isFish = {1900, 1, 1};
-    while (isFish.year != Fish.year && isFish.month != Fish.month && isFish.day != Fish.day) {
-        if (isFish.day == 30) {
-            isFish.day = 1;
-            isFish.month += 1;
-        }
-        isFish.day += 1;
-    }
+    
 }
