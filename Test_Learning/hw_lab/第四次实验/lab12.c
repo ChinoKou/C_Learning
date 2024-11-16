@@ -77,9 +77,9 @@ double Static (Stu ArrStu[]) {
             }
         }
     }
-    printf("\n学生成绩排序如下: \n名次\t 姓名\t 学号\t 成绩\t 等级\t\n");
+    printf("\n学生成绩如下: \n姓名\t 学号\t 成绩\t 等级\t 名次\n");
     for (int i = 0; i < 10; i++) {
-        printf("%d\t %s\t %s\t %.2lf\t %c\t\n", ArrStu[i].marks.order, ArrStu[i].name, ArrStu[i].stu_num, ArrStu[i].marks.scores, ArrStu[i].marks.grade);
+        printf("%s\t %s\t %.2lf\t %c\t 第 %d 名\n", ArrStu[i].name, ArrStu[i].stu_num, ArrStu[i].marks.scores, ArrStu[i].marks.grade,  ArrStu[i].marks.order);
     }
     for (int i = 0; i < 5; i++) {
         printf("成绩等级为 %c 的有 %d 位同学\n", 65 + i, count_grade[i]);
