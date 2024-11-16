@@ -3,14 +3,14 @@
 typedef struct {
     char name[100];
     char stu_num[10];
-    struct mark marks;
+    mark marks;
 } Stu;
 
-struct mark{
+typedef struct{
     char grade;
     int order;
     double scores;
-};
+} mark;
 
 double Static (Stu ArrStu[]);
 
