@@ -22,5 +22,10 @@ int main () {
 
 int FishNet (Date Fish) {
     Date isFish = {1900, 1, 1};
+    int year = Fish.year - isFish.year;
+    int month = Fish.month - isFish.month;
+    int day = Fish.day - isFish.day;
     
+    //1902 5 4
+    //2 4 4
 }
