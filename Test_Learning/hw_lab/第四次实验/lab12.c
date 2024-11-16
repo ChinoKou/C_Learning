@@ -18,12 +18,8 @@ double Static (Stu ArrStu[]);
 int main () {
     Stu ArrStu[10];
     for (int i = 0; i < 10; i++) {
-        printf("\n请输入第 %d 位学生的学号: ", i + 1);
-        scanf("%s", ArrStu[i].stu_num);
-        printf("请输入第 %d 位学生的姓名: ", i + 1);
-        scanf("%s", ArrStu[i].name);
-        printf("请输入第 %d 位学生的分数: ", i + 1);
-        scanf("%lf", &ArrStu[i].marks.scores);
+        printf("请输入第 %d 位学生的学号, 姓名和分数: ", i + 1);
+        scanf("%s %s %lf", ArrStu[i].stu_num, ArrStu[i].name, &ArrStu[i].marks.scores);
         ArrStu[i].input_order = i + 1;
     }
     double avg = Static(ArrStu);
