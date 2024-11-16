@@ -25,7 +25,11 @@ int FishNet (Date Fish) {
     int year = Fish.year - isFish.year;
     int month = Fish.month - isFish.month;
     int day = Fish.day - isFish.day;
-    
-    //1902 5 4
-    //2 4 4
+    int count = year * 12 * 30 + month * 30 + day;
+    if (count % 5 >= 0 && count % 5 <= 2) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
 }
