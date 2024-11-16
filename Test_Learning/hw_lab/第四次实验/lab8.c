@@ -7,11 +7,13 @@ int main () {
     for (int i = 0; i < 5; i++) {
         scanf("%s", s[i]);
     }
-
+    sort(s);
     printf("%s", s);
     return 0;
 }
 
 void sort (char* s) {
-    
+    for (int i = 0; i < 5; i++) {
+        
+    }
 }
