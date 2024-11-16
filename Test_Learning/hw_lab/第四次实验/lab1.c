@@ -18,18 +18,26 @@ int main () {
         }
     }
     printf("互换后的 n 个整数依次是: ");
-    printf("%d ", min);
-    for (int i = 1; i < n - 1; i++) {
+    if (min == arr[n - 1]) {
+        temp = arr[0];
+        arr[0] = min;
+        arr[n - 1] = temp;
+    }
+    for (int i = 0; i < n; i++) {
         if (min == arr[i]) {
-            printf("%d ", arr[0]);
+            temp = arr[0];
+            arr[0] = min;
+            arr[i] = temp;
         }
         else if (max == arr[i]) {
-            printf("%d ", arr[n-1]);
-        }
-        else {
-            printf("%d ", arr[i]);
+            temp = arr[n - 1];
+            arr[n - 1] = max;
+            arr[i] = temp;
         }
     }
-    printf("%d ", max);
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
     return 0;
 }
