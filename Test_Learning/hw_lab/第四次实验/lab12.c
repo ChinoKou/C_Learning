@@ -3,7 +3,6 @@
 typedef struct {
     char name[100];
     char stu_num[10];
-    int order;
     double marks;
 } Stu;
 
@@ -18,7 +17,6 @@ int main () {
         scanf("%s", ArrStu[i].name);
         printf("请输入第 %d 位学生的分数: ", i + 1);
         scanf("%lf", &ArrStu[i].marks);
-        ArrStu[i].order = i + 1;
     }
     double avg = Static(ArrStu);
     printf("平均成绩为: %.2lf", avg);
