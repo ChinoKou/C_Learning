@@ -1,15 +1,15 @@
 #include <stdio.h>
 
-typedef struct student {
+typedef struct {
     char name[100];
     char stu_num[10];
     double marks;
-}stu;
+} Stu;
 
-double Static (stu ArrStu[]);
+double Static (Stu ArrStu[]);
 
 int main () {
-    stu ArrStu[10];
+    Stu ArrStu[10];
     for (int i = 0; i < 10; i++) {
         printf("\n请输入第 %d 位学生的学号: ", i + 1);
         scanf("%s", ArrStu[i].stu_num);
@@ -23,7 +23,7 @@ int main () {
     return 0;
 }
 
-double Static (stu ArrStu[]) {
+double Static (Stu ArrStu[]) {
     int grade[5] = {0, 0, 0, 0, 0};
     char char_grade[6] = "ABCDE";
     double sum = 0;
@@ -48,7 +48,7 @@ double Static (stu ArrStu[]) {
     for (int i = 0; i < 10; i++) {
         for (int j = i; j < 10; j++) {
             if (ArrStu[i].marks < ArrStu[j].marks) {
-                stu temp = ArrStu[i];
+                Stu temp = ArrStu[i];
                 ArrStu[i] = ArrStu[j];
                 ArrStu[j] = temp;
             }
