@@ -1,15 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int main () {
     int n;
     long long min;
     scanf("%d", &n);
-    long long* arr1 = (long long*)malloc(1000000000000 * sizeof(long long));
+    long long* arr1 = (long long*)malloc(1000000000000LL * sizeof(long long));
     long long* arr = (long long*)malloc(n * sizeof(long long));
-    for (long long i = 0; i < 1000000000000; i++) {
-        *(arr1 + i) = 0;
-    }
+    memset(arr1, 0, 1000000000000LL * sizeof(long long));
     for (int i = 0; i < n; i++) {
         scanf("%lld", (arr + i));
         *(arr1 + *(arr + i)) += 1;
