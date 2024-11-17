@@ -5,8 +5,8 @@ int main () {
     int n;
     long long min;
     scanf("%d", &n);
-    long long* arr1 = malloc(8 * n);
-    long long* arr = malloc(8 * n);
+    long long* arr1 = (long long*)malloc(n * sizeof(long long));
+    long long* arr = (long long*)malloc(n * sizeof(long long));
     for (int i = 0; i < n; i++) {
         *(arr1 + i) = 0;
     }
@@ -21,5 +21,7 @@ int main () {
         }
         printf("%lld %lld\n", min, *(arr1 + min));
     }
+    free(arr);
+    free(arr1);
     return 0;
 }
