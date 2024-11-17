@@ -6,9 +6,9 @@ int main () {
     scanf("%d", &n);
     for (int i = 0; i < n; i++) {
         scanf("%lld", &arr[i]);
-        if (i == 0) {
-            min = arr[0];
-        }
+    }
+    min = arr[0];
+    for (int i = 0; i < n; i++) {
         if (min > arr[i]) {
             min = arr[i];
             count = 1;
