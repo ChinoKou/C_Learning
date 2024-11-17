@@ -4,21 +4,21 @@
 int main () {
     int n;
     long long arr[n], min;
-    int* arr1 = malloc(4 * n);
     scanf("%d", &n);
+    int* arr1 = malloc(4 * n);
     for (int i = 0; i < n; i++) {
-        arr1[i] = 0;
+        *(arr1 + i) = 0;
     }
     for (int i = 0; i < n; i++) {
         scanf("%lld", &arr[i]);
         if (i == 0) {
             min = arr[0];
         }
-        arr1[arr[i]] += 1;
+        *(arr1 + arr[i]) += 1;
         if (min > arr[i]) {
             min = arr[i];
         }
-        printf("%lld %lld\n", min, arr1[min]);
+        printf("%lld %lld\n", min, *(arr1 + min));
     }
     return 0;
 }
