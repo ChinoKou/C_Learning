@@ -3,12 +3,11 @@
 #include <string.h>
 
 int main () {
-    int n;
+    int n, arr1[100000];
     long long min;
     scanf("%d", &n);
-    int* arr1 = (int*)malloc(1000000000000 * sizeof(int));
     long long* arr = (long long*)malloc(n * sizeof(long long));
-    memset(arr1, 0, 1000000000000 * sizeof(int));
+    memset(arr1, 0, 100000 * sizeof(int));
     for (int i = 0; i < n; i++) {
         scanf("%lld", (arr + i));
         *(arr1 + *(arr + i)) += 1;
@@ -21,6 +20,5 @@ int main () {
         printf("%lld %d\n", min, *(arr1 + min));
     }
     free(arr);
-    free(arr1);
     return 0;
 }
