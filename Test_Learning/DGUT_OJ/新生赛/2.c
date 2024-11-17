@@ -1,23 +1,22 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 int main () {
-    int n, arr1[100000];
+    int n, count = 1;
     long long min, arr[n];
     scanf("%d", &n);
-    memset(arr1, 0, 100000 * sizeof(int));
     for (int i = 0; i < n; i++) {
         scanf("%lld", &arr[i]);
-        arr1[arr[i]] += 1;
         if (i == 0) {
-            min = *arr;
+            min = arr[0];
         }
-        if (min > *(arr + i)) {
-            min = *(arr + i);
+        if (min > arr[i]) {
+            min = arr[i];
+            count = 1;
         }
-        printf("%lld %d\n", min, *(arr1 + min));
+        else if (min == arr[i]) {
+            count += 1;
+        }
+        printf("%lld %d\n", min, count);
     }
-    free(arr);
     return 0;
 }
