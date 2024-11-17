@@ -14,7 +14,7 @@ int main () {
             count = 1;
         }
         else if (min == arr[i]) {
-            count += 1;
+            count++;
         }
         printf("%lld %d\n", min, count);
     }
