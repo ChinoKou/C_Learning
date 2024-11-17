@@ -4,13 +4,12 @@
 
 int main () {
     int n, arr1[100000];
-    long long min;
+    long long min, arr[n];
     scanf("%d", &n);
-    long long* arr = (long long*)malloc(n * sizeof(long long));
     memset(arr1, 0, 100000 * sizeof(int));
     for (int i = 0; i < n; i++) {
-        scanf("%lld", (arr + i));
-        *(arr1 + *(arr + i)) += 1;
+        scanf("%lld", &arr[i]);
+        arr1[arr[i]] += 1;
         if (i == 0) {
             min = *arr;
         }
