@@ -1,9 +1,11 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int main () {
     int n;
+    long long arr[n], min;
+    int* arr1 = malloc(4 * n);
     scanf("%d", &n);
-    long long arr[n], arr1[n], min;
     for (int i = 0; i < n; i++) {
         arr1[i] = 0;
     }
