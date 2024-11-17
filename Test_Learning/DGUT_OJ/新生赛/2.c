@@ -11,10 +11,10 @@ int main () {
     }
     for (int i = 0; i < n; i++) {
         scanf("%lld", &arr[i]);
+        *(arr1 + arr[i]) += 1;
         if (i == 0) {
             min = arr[0];
         }
-        *(arr1 + arr[i]) += 1;
         if (min > arr[i]) {
             min = arr[i];
         }
