@@ -7,7 +7,7 @@ int main () {
     scanf("%d", &n);
     long long* arr1 = (long long*)malloc(1000000000000 * sizeof(long long));
     long long* arr = (long long*)malloc(n * sizeof(long long));
-    for (int i = 0; i < 1000000000000; i++) {
+    for (long long i = 0; i < 1000000000000; i++) {
         *(arr1 + i) = 0;
     }
     for (int i = 0; i < n; i++) {
