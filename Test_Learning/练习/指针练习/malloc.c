@@ -1,17 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void p_print(int* arr, int n);
+
 int main () {
     int n;
     scanf("%d", &n);
     int arr[n];
     int* p = arr;
-    //int* arr = (int*)malloc(n * sizeof(int));
+    p_print(arr, n);
+    return 0;
+}
+
+void p_print (int* arr, int n) {
     for (int i = 0; i < n; i++) {
-        *(arr + i) = 0;
+        arr[i] = 0;
     }
     for (int i = 0; i < n; i++) {
         printf("%d", arr[i]);
     }
-    return 0;
 }
