@@ -3,7 +3,7 @@
 typedef struct {
     char name[100];
     char stu_num[100];
-    int scores;
+    double scores;
 } Stu;
 
 void sort (Stu* ArrStu);
