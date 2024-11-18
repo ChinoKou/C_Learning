@@ -14,22 +14,29 @@ typedef struct {
     mark marks;
 } Stu;
 
-double Static (Stu ArrStu[]);
+double Static (Stu* ArrStu, int* count_grade);
 
 int main () {
     Stu ArrStu[10];
+    int count_grade[5] = {0, 0, 0, 0, 0};
     for (int i = 0; i < 10; i++) {
         printf("请输入第 %d 位学生的学号, 姓名和分数: ", i + 1);
         scanf("%s %s %lf", ArrStu[i].stu_num, ArrStu[i].name, &ArrStu[i].marks.scores);
         ArrStu[i].input_order = i + 1;
     }
-    double avg = Static(ArrStu);
+    double avg = Static(ArrStu, count_grade);
+    printf("\n学生成绩如下: \n姓名\t 学号\t  成绩\t 等级\t 名次\n");
+    for (int i = 0; i < 10; i++) {
+        printf("%s\t %s  %.1lf\t %c\t 第 %d 名\n", ArrStu[i].name, ArrStu[i].stu_num, ArrStu[i].marks.scores, ArrStu[i].marks.grade,  ArrStu[i].marks.order);
+    }
+    for (int i = 0; i < 5; i++) {
+        printf("成绩等级为 %c 的有 %d 位同学\n", 65 + i, count_grade[i]);
+    }
     printf("平均成绩为: %.2lf", avg);
     return 0;
 }
 
-double Static (Stu ArrStu[]) {
-    int count_grade[5] = {0, 0, 0, 0, 0};
+double Static (Stu* ArrStu, int* count_grade) {
     double sum = 0;
     for (int i = 0; i < 10; i++) {
         if (ArrStu[i].marks.scores >= 90) {
@@ -74,13 +81,6 @@ double Static (Stu ArrStu[]) {
                 ArrStu[j] = temp;
             }
         }
-    }
-    printf("\n学生成绩如下: \n姓名\t 学号\t  成绩\t 等级\t 名次\n");
-    for (int i = 0; i < 10; i++) {
-        printf("%s\t %s  %.1lf\t %c\t 第 %d 名\n", ArrStu[i].name, ArrStu[i].stu_num, ArrStu[i].marks.scores, ArrStu[i].marks.grade,  ArrStu[i].marks.order);
-    }
-    for (int i = 0; i < 5; i++) {
-        printf("成绩等级为 %c 的有 %d 位同学\n", 65 + i, count_grade[i]);
     }
     return (sum / 10);
 }
