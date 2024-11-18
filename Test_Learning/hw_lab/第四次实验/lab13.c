@@ -2,7 +2,7 @@
 
 typedef struct {
     char name[100];
-    char stu_num;
+    char stu_num[100];
     int scores;
 } Stu;
 
@@ -15,6 +15,9 @@ int main () {
         scanf("%s %s %lf", ArrStu[i].stu_num, ArrStu[i].name, &ArrStu[i].scores);
     }
     sort(ArrStu);
+    for (int i = 0; i < 10; i++) {
+        printf("%s\t %s\t %lf\n", ArrStu[i].name, ArrStu[i].stu_num, ArrStu[i].scores);
+    }
     return 0;
 }
 
