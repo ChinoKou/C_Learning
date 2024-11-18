@@ -61,7 +61,8 @@
   "files.associations": {
     "text_encoding": "c",
     "typeinfo": "c",
-    "stdio.h": "c"
+    "stdio.h": "c",
+    "stdlib.h": "c"
   },
   "gitdoc.enabled": true
 }

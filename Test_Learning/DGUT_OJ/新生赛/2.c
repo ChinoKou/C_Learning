@@ -2,8 +2,8 @@
 
 int main () {
     int n, count = 0;
-    long long min, arr[n];
     scanf("%d", &n);
+    long long min, arr[n];
     for (int i = 0; i < n; i++) {
         scanf("%lld", &arr[i]);
     }
