@@ -8,12 +8,15 @@ int main () {
         scanf("%s", s[i]);
     }
     sort(s);
+    for (int i = 0; i < 5; i++) {
+        printf("%s ", s[i]);
+    }
     return 0;
 }
 
 void sort (char(*s)[100]) {
     for (int i = 0; i < 5; i++) {
-        for (int j = i; i < 5; j++) {
+        for (int j = i; j < 5; j++) {
             if (*(*s + i) < *(*s + j)) {
                 char temp[100];
                 strcpy(temp, (*s) + i);
