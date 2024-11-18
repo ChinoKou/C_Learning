@@ -14,12 +14,12 @@ int main () {
 void sort (char(*s)[100]) {
     for (int i = 0; i < 5; i++) {
         for (int j = i; i < 5; j++) {
-            //if (!strcmp(s, s)) {
+            if (*(*s + i) < *(*s + j)) {
                 char temp[100];
                 strcpy(temp, (*s) + i);
                 strcpy((*s) + i, (*s) + j);
                 strcpy((*s) + j, temp);
-            //}
+            }
         }
     }
 }
