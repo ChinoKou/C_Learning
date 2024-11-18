@@ -15,6 +15,7 @@ int main () {
         scanf("%s %s %lf", ArrStu[i].stu_num, ArrStu[i].name, &ArrStu[i].scores);
     }
     sort(ArrStu);
+    printf("\n学生成绩如下: \n姓名\t 学号\t 成绩\t");
     for (int i = 0; i < 10; i++) {
         printf("%s\t %s\t %lf\n", ArrStu[i].name, ArrStu[i].stu_num, ArrStu[i].scores);
     }
