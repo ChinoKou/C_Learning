@@ -21,7 +21,7 @@ void sort (char(*s)[100]) {
                 char temp[100];
                 strcpy(temp, s[i]);
                 strcpy(s[i], s[j]);
-                strcpy(s[j], s[i]);
+                strcpy(s[j], temp);
             }
         }
     }
