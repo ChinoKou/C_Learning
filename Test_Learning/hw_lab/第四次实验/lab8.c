@@ -17,11 +17,11 @@ int main () {
 void sort (char(*s)[100]) {
     for (int i = 0; i < 5; i++) {
         for (int j = i; j < 5; j++) {
-            if (*(*s + i) < *(*s + j)) {
+            if (strcmp(s[i], s[j]) < 0) {
                 char temp[100];
-                strcpy(temp, (*s) + i);
-                strcpy((*s) + i, (*s) + j);
-                strcpy((*s) + j, temp);
+                strcpy(temp, s[i]);
+                strcpy(s[i], s[j]);
+                strcpy(s[j], s[i]);
             }
         }
     }
