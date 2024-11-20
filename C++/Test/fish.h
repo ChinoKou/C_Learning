@@ -6,4 +6,4 @@ typedef struct {
     int month;
     int day;
 } Date;
-int FishNet (Date Fish);
+bool FishNet (Date Fish);
