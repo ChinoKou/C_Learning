@@ -34,7 +34,7 @@ int main () {
                 cout << a[i][j] << " ";
             }
         }
-        cout << "\n";
+        cout << endl;
     }
     return 0;
 }
