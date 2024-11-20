@@ -8,6 +8,9 @@ int main() {
     cout << str << endl;
     bool flag = true;
     cout << "size to bool " << sizeof(flag) << endl;
+    int a;
+    cin >> a;
+    cout << a << endl;
     system("pause");
     return 0;
 }
