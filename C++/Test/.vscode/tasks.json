@@ -8,7 +8,6 @@
                 "-fdiagnostics-color=always",
                 "-g",
                 "${file}",
-                "-I",
                 "include",
                 "execute\\fish.cpp",
                 "-o",
