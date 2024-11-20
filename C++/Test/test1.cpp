@@ -10,7 +10,7 @@ int main() {
     cout << "size to bool " << sizeof(flag) << endl;
     int a;
     cin >> a;
-    cout << a << endl;
+    cout << "bianliang a:" << a << endl;
     system("pause");
     return 0;
 }
