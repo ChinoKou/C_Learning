@@ -11,6 +11,5 @@ int main() {
     int a;
     cin >> a;
     cout << "bianliang a:" << a << endl;
-    system("pause");
     return 0;
 }
