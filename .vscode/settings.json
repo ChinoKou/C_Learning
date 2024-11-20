@@ -62,7 +62,10 @@
     "text_encoding": "c",
     "typeinfo": "c",
     "stdio.h": "c",
-    "stdlib.h": "c"
+    "stdlib.h": "c",
+    "iostream": "cpp",
+    "ostream": "cpp",
+    "istream": "cpp"
   },
   "gitdoc.enabled": true
 }
