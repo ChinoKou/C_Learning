@@ -1,9 +1,9 @@
 #include <stdio.h>
-typedef long long llong;
+
 int main () {
     int n, count = 0;
     scanf("%d", &n);
-    llong min, arr[n];
+    long long min, arr[n];
     for (int i = 0; i < n; i++) {
         scanf("%lld", &arr[i]);
     }
