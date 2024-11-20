@@ -31,6 +31,9 @@
                 "-fdiagnostics-color=always",
                 "-g",
                 "${file}",
+                "-i",
+                "${fileDirname}\\include",
+                "${fileDirname}\\execute",
                 "-o",
                 "${workspaceFolder}\\build\\${fileBasenameNoExtension}.exe"
             ],
