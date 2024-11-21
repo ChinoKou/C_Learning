@@ -38,6 +38,7 @@ int main () {
 double Static (Stu* ArrStu, int* count_grade) {
     double sum = 0;
     for (int i = 0; i < 10; i++) {
+        printf("%d\n", (*(ArrStu + i)).marks.scores);
         if ((*(ArrStu + i)).marks.scores >= 90) {
             (*(ArrStu + i)).marks.grade = 'A';
             (*count_grade)++;
