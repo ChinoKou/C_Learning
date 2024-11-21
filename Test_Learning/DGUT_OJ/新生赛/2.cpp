@@ -3,8 +3,8 @@
 using namespace std;
 int main () {
     int n;
-    int* arr1 = new int[10000000000];
-    memset(arr1, 0, 10000000000);
+    int* arr1 = new int[1000000000000];
+    memset(arr1, 0, 1000000000000);
     cin >> n;
     long long min;
     long long* arr = new long long[n];
