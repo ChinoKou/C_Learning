@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-typedef struct{
+typedef struct {
     char grade;
     int order;
     double scores;
@@ -38,7 +38,6 @@ int main () {
 double Static (Stu* ArrStu, int* count_grade) {
     double sum = 0;
     for (int i = 0; i < 10; i++) {
-        printf("%lf\n", ArrStu[i].marks.scores);
         if ((*(ArrStu + i)).marks.scores >= 90) {
             (*(ArrStu + i)).marks.grade = 'A';
             (*count_grade)++;
