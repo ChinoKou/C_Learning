@@ -12,6 +12,7 @@ int main() {
     for (int i = 0; i < n; i++) {
         int max = *(*arr + i);
         for (int j = 0; j < n; j++) {
+            printf("%d ", *(*(arr + j) + i));
             if (max < (*(*(arr + j) + i))) {
                 max = (*(*(arr + j) + i));
             }
