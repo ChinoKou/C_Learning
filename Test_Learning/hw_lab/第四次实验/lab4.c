@@ -12,12 +12,14 @@ int main() {
     for (int i = 0; i < n; i++) {
         int max = *(*arr + i);
         for (int j = 0; j < n; j++) {
-            if (max < *(*(arr + j) + i)) max = *(*(arr + j) + i);
+            if (max < *(*(arr + j) + i)) {
+                max = *(*(arr + j) + i);
+            }
         }
         for (int j = 0; j < n; j++) {
             if (max == *(*(arr + j) + i)) {
                 int min = max;
-                for (int h =0 ; h < n; h++) {
+                for (int h = 0 ; h < n; h++) {
                     if (min > *(*(arr + j) + h)) {
                         min = *(*(arr + j) + h);
                     }
