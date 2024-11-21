@@ -25,7 +25,7 @@ int main () {
 void sort (Stu* ArrStu) {
     for (int i = 0; i < 10; i++) {
         for (int j = i; j < 10; j++) {
-            if (ArrStu[i].scores > ArrStu[j].scores) {
+            if ((*(ArrStu + i)).scores > ArrStu[j].scores) {
                 Stu temp = ArrStu[i];
                 ArrStu[i] = ArrStu[j];
                 ArrStu[j] = temp;
