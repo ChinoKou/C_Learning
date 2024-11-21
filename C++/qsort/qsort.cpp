@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 int func(const void* p1, const void* p2) {
-    return -1;
+    return *((int*)p1) - *((int*)p2);
 }
 int main () {
     int n, arr[10];
