@@ -1,14 +1,13 @@
-#include <iostream>
-using namespace std;
+#include <stdio.h>
 
 int main() {
     int n, arr[6][6], count = 0; 
-    cout << "请输入一个正整数 n (1 <= n <= 6): ";
-    cin >> n;
-    cout << "请输入 " << n << " 阶方阵的元素: ";
+    printf("请输入一个正整数 n (1 <= n <= 6): ");
+    scanf("%d", &n);
+    printf("请输入 %d 阶方阵的元素: ", n);
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) 
-            cin >> *(*(arr + j) + i);
+            scanf("%d", ((arr + j) + i));
     }
     for (int i = 0; i < n; i++) {
         int max = *(*arr + i);
@@ -22,7 +21,7 @@ int main() {
                     if (min > *(*(arr + j) + h)) min = *(*(arr + j) + h);
                 }
                 if (max == min) {
-                    cout << "该 " << n << " 阶方阵的鞍点下标为: " << i << ", " << j;
+                    printf("该 %d 阶方阵的鞍点下标为: %d, %d", n, i, j);
                     return 0;
                 }
             }
