@@ -38,36 +38,36 @@ int main () {
 double Static (Stu* ArrStu, int* count_grade) {
     double sum = 0;
     for (int i = 0; i < 10; i++) {
-        if (ArrStu[i].marks.scores >= 90)
-        if ((*(ArrStu + i)).marks.scores >= 90) {
-            (*(ArrStu + i)).marks.grade = 'A';
+        if ((*ArrStu).marks.scores >= 90) {
+            (*ArrStu).marks.grade = 'A';
             (*count_grade)++;
         }
-        else if ((*(ArrStu + i)).marks.scores >= 80 && (*(ArrStu + i)).marks.scores < 90) {
-            (*(ArrStu + i)).marks.grade = 'B';
+        else if ((*ArrStu).marks.scores >= 80 && (*ArrStu).marks.scores < 90) {
+            (*ArrStu).marks.grade = 'B';
             (*(count_grade + 1))++;
         }
-        else if ((*(ArrStu + i)).marks.scores >= 70 && (*(ArrStu + i)).marks.scores < 80) {
-            (*(ArrStu + i)).marks.grade = 'C';
+        else if ((*ArrStu).marks.scores >= 70 && (*ArrStu).marks.scores < 80) {
+            (*ArrStu).marks.grade = 'C';
             (*(count_grade + 2))++;
         }
-        else if ((*(ArrStu + i)).marks.scores >= 60 && (*(ArrStu + i)).marks.scores < 70) {
-            (*(ArrStu + i)).marks.grade = 'D';
+        else if ((*ArrStu).marks.scores >= 60 && (*ArrStu).marks.scores < 70) {
+            (*ArrStu).marks.grade = 'D';
             (*(count_grade + 3))++;
         }
-        else if ((*(ArrStu + i)).marks.scores >= 0 && (*(ArrStu + i)).marks.scores < 60) {
-            (*(ArrStu + i)).marks.grade = 'E';
+        else if ((*ArrStu).marks.scores >= 0 && (*ArrStu).marks.scores < 60) {
+            (*ArrStu).marks.grade = 'E';
             (*(count_grade + 4))++;
         }
-        sum += (*(ArrStu + i)).marks.scores;
+        sum += (*ArrStu).marks.scores;
+        ArrStu++;
     }
     //排序求学生成绩名次
     for (int i = 0; i < 10; i++) {
         for (int j = i; j < 10; j++) {
-            if ((*(ArrStu + i)).marks.scores < (*(ArrStu + j)).marks.scores) {
-                Stu temp = *(ArrStu + i);
-                *(ArrStu + i) = *(ArrStu + j);
-                *(ArrStu + j) = temp;
+            if ((*(ArrStu += i)).marks.scores < (*(ArrStu += j)).marks.scores) {
+                Stu temp = *(ArrStu += i);
+                *(ArrStu += i) = *(ArrStu += j);
+                *(ArrStu += j) = temp;
             }
         }
         (*(ArrStu + i)).marks.order = i + 1;
@@ -75,10 +75,10 @@ double Static (Stu* ArrStu, int* count_grade) {
     //根据原始排序还原顺序
     for (int i = 0; i < 10; i++) {
         for (int j = i; j < 10; j++) {
-            if ((*(ArrStu + i)).input_order > (*(ArrStu + j)).input_order) {
-                Stu temp = *(ArrStu + i);
-                *(ArrStu + i) = *(ArrStu + j);
-                *(ArrStu + j) = temp;
+            if ((*(ArrStu += i)).input_order > (*(ArrStu += j)).input_order) {
+                Stu temp = *(ArrStu += i);
+                *(ArrStu += i) = *(ArrStu += j);
+                *(ArrStu += j) = temp;
             }
         }
     }
