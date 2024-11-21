@@ -54,3 +54,4 @@ dkms.conf
 c_cpp_properties.json
 launch.json
 tasks.json
+*.prob
