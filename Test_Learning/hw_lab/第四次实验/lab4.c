@@ -7,23 +7,18 @@ int main() {
     printf("请输入 %d 阶方阵的元素: ", n);
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) 
-            scanf("%d", &arr[i][j]);
+            scanf("%d", *(arr + i) + j);
     }
     for (int i = 0; i < n; i++) {
-        int max = *(*arr + i);
+        int max = *(*(arr + i));
         for (int j = 0; j < n; j++) {
-            printf("%d ", *(*(arr + j) + i));
-            if (max < (*(*(arr + j) + i))) {
-                max = (*(*(arr + j) + i));
-            }
+            if (max < *(*(arr + i) + j)) max = *(*(arr + i) + j);
         }
         for (int j = 0; j < n; j++) {
-            if (max == *(*(arr + j) + i)) {
+            if (max == *(*(arr + i) + j)) {
                 int min = max;
                 for (int h = 0 ; h < n; h++) {
-                    if (min > *(*(arr + j) + h)) {
-                        min = *(*(arr + j) + h);
-                    }
+                    if (min > *(*(arr + h) + j)) min = *(*(arr + h) + j);
                 }
                 if (max == min) {
                     printf("该 %d 阶方阵的鞍点下标为: %d, %d", n, i, j);
