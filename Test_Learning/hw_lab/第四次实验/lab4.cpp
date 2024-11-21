@@ -24,7 +24,7 @@ int main() {
                 }
                 if (max == min) {
                     cout << "该 " << n << " 阶方阵的鞍点下标为: " << i << ", " << j;
-                    exit;
+                    return 0;
                 }
             }
         }
