@@ -64,7 +64,7 @@ double Static (Stu* ArrStu, int* count_grade) {
     //排序求学生成绩名次
     for (int i = 0; i < 10; i++) {
         for (int j = i; j < 10; j++) {
-            if ((*(ArrStu + i)).marks.scores < (*(ArrStu + i)).marks.scores) {
+            if ((*(ArrStu + i)).marks.scores < (*(ArrStu + j)).marks.scores) {
                 Stu temp = *(ArrStu + i);
                 *(ArrStu + i) = *(ArrStu + j);
                 *(ArrStu + j) = temp;
@@ -75,7 +75,7 @@ double Static (Stu* ArrStu, int* count_grade) {
     //根据原始排序还原顺序
     for (int i = 0; i < 10; i++) {
         for (int j = i; j < 10; j++) {
-            if ((*(ArrStu + i)).input_order > (*(ArrStu + i)).input_order) {
+            if ((*(ArrStu + i)).input_order > (*(ArrStu + j)).input_order) {
                 Stu temp = *(ArrStu + i);
                 *(ArrStu + i) = *(ArrStu + j);
                 *(ArrStu + j) = temp;
