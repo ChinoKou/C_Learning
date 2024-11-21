@@ -13,7 +13,7 @@ typedef struct {
     mark marks;
 } Stu;
 
-double Static (Stu ArrStu[], int* count_grade);
+double Static (Stu* ArrStu, int* count_grade);
 
 int main () {
     Stu ArrStu[10];
@@ -35,7 +35,7 @@ int main () {
     return 0;
 }
 
-double Static (Stu ArrStu[], int* count_grade) {
+double Static (Stu* ArrStu, int* count_grade) {
     double sum = 0;
     for (int i = 0; i < 10; i++) {
         printf("%d\n", ArrStu[i].marks.scores);
