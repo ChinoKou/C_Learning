@@ -1,5 +1,4 @@
 #include <iostream>
-
 using namespace std;
 
 int main() {
@@ -25,7 +24,7 @@ int main() {
                 }
                 if (max == min) {
                     cout << "该 " << n << " 阶方阵的鞍点下标为: " << i << ", " << j;
-                    return 0;
+                    exit;
                 }
             }
         }
