@@ -8,7 +8,7 @@ int main() {
     cout << "请输入 " << n << " 阶方阵的元素: ";
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            cin >> arr[i][j];
+            cin >> *(*(arr + j) + i);
         }
     }
     for (int i = 0; i < n; i++) {
