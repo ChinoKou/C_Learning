@@ -12,7 +12,6 @@ int is_bissextile (int year);
 
 int main () {
     Date Fish;
-    while (1) {
     printf("\n请输入日期(年 月 日): ");
     scanf("%d %d %d", &Fish.year, &Fish.month, &Fish.day);
     if (FishNet(Fish)) {
@@ -20,7 +19,6 @@ int main () {
     }
     else {
         printf("则此人这天为晒网");
-    }
     }
     return 0;
 }
