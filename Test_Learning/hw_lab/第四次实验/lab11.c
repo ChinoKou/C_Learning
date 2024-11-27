@@ -34,17 +34,17 @@ int FishNet (Date Fish) {
         }
     }
     for (int i = 1; i < Fish.month; i++) {
-        if (i <= 7 && (i % 2)) {
+        if (i == 1 || i == 3 || i == 5 || i == 7 || i == 8 || i == 10 || i == 12) {
             days += 31;
         }
-        else if (i == 2 && !(Fish.year % 4) && (Fish.year % 100)) {
+        else if (i == 4 || i == 6 || i == 9 || i == 11) {
+            days += 30;
+        }
+        else if (!(Fish.year % 4) && (Fish.year % 100) && Fish.year != 2000) {
             days += 29;
         }
-        else if (i <= 7 && !(i % 2) && i != 2) {
-            days += 30;
-        }
-        else if (i > 7 && (i % 2)) {
-            days += 30;
+        else {
+            days += 28;
         }
     }
     if (days % 5 >= 0 && days % 5 <= 2) {
