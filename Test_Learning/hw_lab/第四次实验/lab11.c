@@ -9,7 +9,6 @@ typedef struct {
 
 int FishNet (Date Fish);
 
-
 int main () {
     Date Fish;
     printf("请输入日期(年 月 日): ");
@@ -35,7 +34,7 @@ int FishNet (Date Fish) {
         }
     }
     for (int i = 1; i < Fish.month; i++) {
-        
+
     }
     if (days % 5 >= 0 && days % 5 <= 2) {
         return 1;
