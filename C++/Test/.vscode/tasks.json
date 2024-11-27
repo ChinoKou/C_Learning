@@ -36,9 +36,9 @@
                 "${file}",
                 "-I",
                 "include",
-                "execute\\fish.cpp",
+                "execute/fish.cpp",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+                "${fileDirname}/${fileBasenameNoExtension}.exe"
             ],
             "options": {
                 "cwd": "${fileDirname}"
