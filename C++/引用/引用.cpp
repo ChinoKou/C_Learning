@@ -12,8 +12,7 @@ int main () {
     return 0;
 }
 
-long long dectobin (int& result) {
-    int n = result;
+long long dectobin (int n) {
     long long temp, result = 0;
     for (int i = 0; n > 0; i++) {
         temp = n % 2;
