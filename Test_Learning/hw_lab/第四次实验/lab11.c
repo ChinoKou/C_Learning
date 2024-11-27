@@ -34,7 +34,18 @@ int FishNet (Date Fish) {
         }
     }
     for (int i = 1; i < Fish.month; i++) {
-        
+        if (i <= 7 && (i % 2)) {
+            days += 31;
+        }
+        else if (i == 2 && !(Fish.year % 4) && (Fish.year % 100)) {
+            days += 29;
+        }
+        else if (i <= 7 && !(i % 2) && i != 2) {
+            days += 30;
+        }
+        else if (i > 7 && (i % 2)) {
+            days += 30;
+        }
     }
     if (days % 5 >= 0 && days % 5 <= 2) {
         return 1;
