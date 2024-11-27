@@ -33,12 +33,13 @@ int FishNet (Date Fish) {
             days += 28 + is_bissextile(Fish.year);
             continue;
         }
-        if (i == 4 || i == 6 || i == 9 || i == 11) {
+        days += 30 + (i == 4 || i == 6 || i == 9 || i == 11);
+        /*if (i == 4 || i == 6 || i == 9 || i == 11) {
             days += 30;
         }
         else {
             days += 31;
-        }
+        }*/
     }
     return (days % 5 >= 0 && days % 5 <= 2);
 }
