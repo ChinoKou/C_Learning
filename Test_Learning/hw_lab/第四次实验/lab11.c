@@ -27,12 +27,7 @@ int main () {
 int FishNet (Date Fish) {
     int days = Fish.day - 1;
     for (int i = 1900; i < Fish.year; i++) {
-        if (is_bissextile(i)) {
-            days += 366;
-        }
-        else {
-            days += 365;
-        }
+        days += 365 + is_bissextile(i);
     }
     for (int i = 1; i < Fish.month; i++) {
         if (i == 1 || i == 3 || i == 5 || i == 7 || i == 8 || i == 10 || i == 12) {
