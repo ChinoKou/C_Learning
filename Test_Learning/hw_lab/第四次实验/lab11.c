@@ -40,11 +40,16 @@ int FishNet (Date Fish) {
         else if (i == 4 || i == 6 || i == 9 || i == 11) {
             days += 30;
         }
-        else if (!(Fish.year % 4) && (Fish.year % 100) && Fish.year != 2000) {
-            days += 29;
-        }
-        else {
-            days += 28;
+        else if (i == 2) {
+            if (Fish.year % 400) {
+                days += 29;
+            }
+            else if (!(Fish.year % 4) && (Fish.year % 100)) {
+                days += 29;
+            }
+            else {
+                days += 28;
+            }
         }
     }
     if (days % 5 >= 0 && days % 5 <= 2) {
