@@ -25,8 +25,15 @@ int main () {
 }
 
 int FishNet (Date Fish) {
-    int count = 0;
-    Date isFish = {1900, 1, 1};
+    int count = Fish.day - 1;
+    for (int i = 1900; i <= Fish.year; i++) {
+        if (!(i % 4) && (i % 100)) {
+            count += 366;
+        }
+        else {
+            count += 365;
+        }
+    }
     if (count % 5 >= 0 && count % 5 <= 2) {
         return 1;
     }
