@@ -25,19 +25,19 @@ int main () {
 }
 
 int FishNet (Date Fish) {
-    int count = Fish.day - 1;
-    for (int i = 1900; i <= Fish.year; i++) {
+    int days = Fish.day - 1;
+    for (int i = 1900; i < Fish.year; i++) {
         if (!(i % 4) && (i % 100)) {
-            count += 366;
+            days += 366;
         }
         else {
-            count += 365;
+            days += 365;
         }
     }
-    for (int i = 1; i <= Fish.month; i++) {
+    for (int i = 1; i < Fish.month; i++) {
         
     }
-    if (count % 5 >= 0 && count % 5 <= 2) {
+    if (days % 5 >= 0 && days % 5 <= 2) {
         return 1;
     }
     else {
