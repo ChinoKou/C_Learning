@@ -8,15 +8,15 @@ bool cmp(int a, int b) {
 }
 int main() {
     int n;
-    scanf("%d", &n);
+    cin >> n;
     int* arr = new int[n];
     for (int i = 0; i < n; i++) {
-        scanf("%d", arr + i);
+        cin >> *(arr + i);
     }
     sort(arr, arr + n, cmp);
-    printf("排序后的数组为: \n");
+    cout << "排序后的数组为: ";
     for (int i = 0; i < n; i++) {
-        printf("%d ", *(arr + i));
+        cout << *(arr + i) << " ";
     }
     return 0;
     
