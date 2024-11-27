@@ -34,6 +34,9 @@ int FishNet (Date Fish) {
             count += 365;
         }
     }
+    for (int i = 1; i <= Fish.month; i++) {
+        
+    }
     if (count % 5 >= 0 && count % 5 <= 2) {
         return 1;
     }
