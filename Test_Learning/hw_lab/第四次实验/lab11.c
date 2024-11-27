@@ -15,10 +15,10 @@ int main () {
     printf("\n请输入日期(年 月 日): ");
     scanf("%d %d %d", &Fish.year, &Fish.month, &Fish.day);
     if (FishNet(Fish)) {
-        printf("则此人这天为打鱼");
+        printf("则此人这天为打鱼\n");
     }
     else {
-        printf("则此人这天为晒网");
+        printf("则此人这天为晒网\n");
     }
     return 0;
 }
@@ -33,12 +33,7 @@ int FishNet (Date Fish) {
             days += 28 + is_bissextile(Fish.year);
             continue;
         }
-        if (i == 4 || i == 6 || i == 9 || i == 11) {
-            days += 30;
-        }
-        else {
-            days += 31;
-        }
+        days += 30 + (i == 4 || i == 6 || i == 9 || i == 11);
     }
     return (days % 5 >= 0 && days % 5 <= 2);
 }
