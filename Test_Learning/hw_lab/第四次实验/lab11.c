@@ -8,6 +8,7 @@ typedef struct {
 } Date;
 
 int FishNet (Date Fish);
+int is_bissextile (int year);
 
 int main () {
     Date Fish;
@@ -26,7 +27,7 @@ int main () {
 int FishNet (Date Fish) {
     int days = Fish.day - 1;
     for (int i = 1900; i < Fish.year; i++) {
-        if (!(i % 4) && (i % 100)) {
+        if (is_bissextile(i)) {
             days += 366;
         }
         else {
@@ -41,15 +42,7 @@ int FishNet (Date Fish) {
             days += 30;
         }
         else if (i == 2) {
-            if (Fish.year % 400) {
-                days += 29;
-            }
-            else if (!(Fish.year % 4) && (Fish.year % 100)) {
-                days += 29;
-            }
-            else {
-                days += 28;
-            }
+            days += 28 + is_bissextile(Fish.year);
         }
     }
     if (days % 5 >= 0 && days % 5 <= 2) {
@@ -58,4 +51,8 @@ int FishNet (Date Fish) {
     else {
         return 0;
     }
+}
+
+int is_bissextile (int year) {
+    return (!(year % 4) && (year % 100)) || !(year % 400);
 }
