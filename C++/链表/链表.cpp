@@ -10,5 +10,15 @@ struct room {
 int main() {
     room *head = NULL, *tmp = NULL, *tail = NULL;
     tmp = new room({101, "a", NULL});
-    
+    head = tail = tmp;
+    tmp = new room({102, "b", NULL});
+    (*tail).next = tmp;
+    tail = tmp;
+    tmp = new room({103, "c", NULL});
+    (*tail).next = tmp;
+    tail = tmp;
+    while(head != ) {
+
+    }
+    return 0;
 }
