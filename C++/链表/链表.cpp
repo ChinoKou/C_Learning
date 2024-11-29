@@ -10,4 +10,5 @@ struct room {
 int main() {
     room *head = NULL, *tmp = NULL, *tail = NULL;
     tmp = new room({101, "a", NULL});
+    
 }
