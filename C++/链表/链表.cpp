@@ -17,8 +17,15 @@ int main() {
     tmp = new room({103, "c", NULL});
     (*tail).next = tmp;
     tail = tmp;
-    while(head != ) {
-
+    tmp = head;
+    while(tmp != NULL) {
+        cout << "号码: " << (*tmp).num << " 名字: " << (*tmp).num << endl;
+        tmp = (*tmp).next;
+    }
+    while (head != NULL) {
+        tmp = head;
+        head = (*head).next;
+        delete tmp;
     }
     return 0;
 }
