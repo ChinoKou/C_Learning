@@ -24,6 +24,7 @@ int main() {
                     temp_b[i] -= origin[i];
                 }
                 if (getx(A, x, temp_b)) {
+                    printf("K1 = %d, K2 = %d, K3 = %d\n", k[0], k[1], k[2]);
                     for (int i = 0; i < 3; i++) {
                         printf("X%d = %.1lf\n", i + 1, x[i]);
                     }
