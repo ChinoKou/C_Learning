@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <math.h>
 
 int getx(double(*A)[3], double*x, double* b);
@@ -7,15 +6,32 @@ int getx(double(*A)[3], double*x, double* b);
 int main() {
     int n = 3;
     double A[3][3];
-    A[0][0] = 0;            A[0][1] = 3.14;     A[0][2] = 3.14;
-    A[1][0] = -3.14;        A[1][1] = -3.14;    A[1][2] = 0;
-    A[2][0] = 2 * 3.14 / 3; A[2][1] = 0;        A[2][2] =  2 * 3.14 / 3;
-    double b[3] = {6.28, 6.28, 6.28};
-    double temp_b[3];
-    double origin[3] = {0, 3.14, 0};
-    int k[3] = {1, -1, 1};
+    double origin[3];
+    double origin_position[3];
     int k_start[3];
     int k_stop[3];
+    int rotate_mode[3][2];
+    char floor[3] = {"外层", "中层", "内层"};
+    printf("输入外层 中层 内层的初始位置 (0 ~ 5) :");
+    scanf("%d %d %d", &origin_position[0], &origin_position[1], &origin_position[2]);
+    printf("外层 - 1 中层 - 2 内层 - 3\n");
+    for (int i = 1; i <= 3; i++) {
+        printf("第 %d 种模式:", i);
+        scanf("%d %d", &rotate_mode[i - 1][0], &rotate_mode[i - 1][1]);
+        for (int j = 1; j <= 2; j++) {
+            printf("输入 %c 的旋转模式 (int - 顺[1]逆[2]时针 int int - 旋转占比[1 ~ 6]) : ", floor[rotate_mode[i - 1][j - 1] - 1]);
+            scanf("");
+        }
+    }
+    A[0][0] = 0 ;            A[0][1] = 3.14;     A[0][2] = 3.14;
+    A[1][0] = -3.14;        A[1][1] = -3.14;    A[1][2] = 0;
+    A[2][0] = 2 * 3.14 / 3; A[2][1] = 0;        A[2][2] =  2 * 3.14 / 3;
+    origin[0] = (double)origin_position[0] / 6 * 3.14;
+    origin[1] = (double)origin_position[1] / 6 * 3.14;
+    origin[2] = (double)origin_position[2] / 6 * 3.14;
+    double b[3] = {6.28, 6.28, 6.28};
+    double temp_b[3];
+    int k[3];
     double x[3];
     for (k[0] = 1; k[0] <= 5; k[0]++) {
         for (k[1] = -5; k[1] <= -1; k[1]++) {
