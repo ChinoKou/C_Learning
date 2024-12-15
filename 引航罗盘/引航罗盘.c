@@ -1,41 +1,54 @@
 #include <stdio.h>
 #include <math.h>
 
-int getx(double(*A)[3], double*x, double* b);
+int getx(double(*A)[3], double* x, double* b);
 
 int main() {
-    int n = 3;
     double A[3][3];
-    double origin[3];
-    double origin_position[3];
-    int k_start[3];
-    int k_stop[3];
-    int rotate_mode[3][2];
-    char floor[3] = {"外层", "中层", "内层"};
-    printf("输入外层 中层 内层的初始位置 (0 ~ 5) :");
-    scanf("%d %d %d", &origin_position[0], &origin_position[1], &origin_position[2]);
-    printf("外层 - 1 中层 - 2 内层 - 3\n");
-    for (int i = 1; i <= 3; i++) {
-        printf("第 %d 种模式:", i);
-        scanf("%d %d", &rotate_mode[i - 1][0], &rotate_mode[i - 1][1]);
-        for (int j = 1; j <= 2; j++) {
-            printf("输入 %c 的旋转模式 (int - 顺[1]逆[2]时针 int int - 旋转占比[1 ~ 6]) : ", floor[rotate_mode[i - 1][j - 1] - 1]);
-            scanf("");
-        }
-    }
-    A[0][0] = 0 ;            A[0][1] = 3.14;     A[0][2] = 3.14;
-    A[1][0] = -3.14;        A[1][1] = -3.14;    A[1][2] = 0;
-    A[2][0] = 2 * 3.14 / 3; A[2][1] = 0;        A[2][2] =  2 * 3.14 / 3;
-    origin[0] = (double)origin_position[0] / 6 * 3.14;
-    origin[1] = (double)origin_position[1] / 6 * 3.14;
-    origin[2] = (double)origin_position[2] / 6 * 3.14;
+    double x[3];
     double b[3] = {6.28, 6.28, 6.28};
     double temp_b[3];
+    double origin[3];
+    double origin_position[3];
     int k[3];
-    double x[3];
-    for (k[0] = 1; k[0] <= 5; k[0]++) {
-        for (k[1] = -5; k[1] <= -1; k[1]++) {
-            for (k[2] = 1; k[2] <= 5; k[2]++) {
+    int k_start[3];
+    int k_stop[3];
+    int mode[3][2];
+    int rotation_mode[3][3];
+    int rotation_direction[3];
+    char* floor[3] = {"外层", "中层", "内层"};
+    printf("输入外层 中层 内层的初始位置 (0 ~ 5) :");
+    scanf("%d %d %d", &origin_position[0], &origin_position[1], &origin_position[2]);
+    printf("输入外层 中层 内层的旋转方向 (0 - 逆时针 1 - 顺时针) :");
+    scanf("%d %d %d", &rotation_direction[0], &rotation_direction[1], &rotation_direction[2]);
+    printf("无 - 0 外层 - 1 中层 - 2 内层 - 3\n");
+    for (int i = 1; i <= 3; i++) {
+        printf("第 %d 种模式:", i);
+        scanf("%d %d", &mode[i - 1][0], &mode[i - 1][1]);
+        for (int j = 1; j <= 2; j++) {
+            if (mode[i - 1][j - 1]) {
+                printf("输入 %c 的旋转模式 (旋转占比[1 ~ 6]) : ", floor[mode[i - 1][j - 1] - 1]);
+                scanf("%d", &rotation_mode[mode[i - 1][j - 1] - 1][i - 1]);
+            }
+        }
+    }
+    for (int i = 0; i < 3; i++) {
+        origin[i] = (double)origin_position[i] / 6 * 3.14 * 2;
+        for (int j = 0; j < 3; j++) {
+            A[i][j] = (double)rotation_mode[i][j] / 6 * 3.14 * 2;
+        }
+        if (rotation_direction[i]) {
+            k_start[i] = 1;
+            k_stop[i] = 3;
+        }
+        else if (!(rotation_direction[i])) {
+            k_start[i] = -3;
+            k_stop[i] = -1;            
+        }
+    }
+    for (k[0] = k_start[0]; k[0] <= k_stop[0]; k[0]++) {
+        for (k[1] = k_start[1]; k[1] <= k_stop[1]; k[1]++) {
+            for (k[2] = k_start[2]; k[2] <= k_stop[2]; k[2]++) {
                 for (int i = 0; i < 3; i++) {
                     temp_b[i] = b[i];
                     temp_b[i] *= k[i];
@@ -54,20 +67,20 @@ int main() {
     return 0;
 }
 
-int getx(double(*A)[3], double*x, double* b) {
-    double copy_A[3][3];
+int getx(double(*origin_A)[3], double* x, double* b) {
+    double A[3][3];
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
-            copy_A[i][j] = A[i][j];
+            A[i][j] = origin_A[i][j];
         }
     }
     for (int i = 0; i < 3; i++) {
         for (int k = i + 1; k < 3; k++) {
-            if (abs(copy_A[i][i]) < abs(copy_A[k][i])) {
+            if (abs(A[i][i]) < abs(A[k][i])) {
                 for (int j = 0; j < 3; j++) {
-                    double temp = copy_A[i][j];
-                    copy_A[i][j] = copy_A[k][j];
-                    copy_A[k][j] = temp;
+                    double temp = A[i][j];
+                    A[i][j] = A[k][j];
+                    A[k][j] = temp;
                 }
                 double temp = b[i];
                 b[i] = b[k];
@@ -75,9 +88,9 @@ int getx(double(*A)[3], double*x, double* b) {
             }
         }
         for (int k = i + 1; k < 3; k++) {
-            double factor = copy_A[k][i] / copy_A[i][i];
+            double factor = A[k][i] / A[i][i];
             for (int j = i; j < 3; j++) {
-                copy_A[k][j] -= factor * copy_A[i][j];
+                A[k][j] -= factor * A[i][j];
             }
             b[k] -= factor * b[i];
         }
@@ -85,9 +98,9 @@ int getx(double(*A)[3], double*x, double* b) {
     for (int i = 3 - 1; i >= 0; i--) {
         x[i] = b[i];
         for (int j = i + 1; j < 3; j++) {
-            x[i] -= copy_A[i][j] * x[j];
+            x[i] -= A[i][j] * x[j];
         }
-        x[i] /= copy_A[i][i];
+        x[i] /= A[i][i];
     }
-    return  fabs(x[1] - round(x[1])) <= 0.2 && fabs(x[2] - round(x[2])) <= 0.2 && fabs(x[3] - round(x[3])) <= 0.2;
+    return fabs(x[1] - round(x[1])) <= 0.2 && fabs(x[2] - round(x[2])) <= 0.2 && fabs(x[3] - round(x[3])) <= 0.2;
 }
