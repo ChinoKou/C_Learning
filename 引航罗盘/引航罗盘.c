@@ -14,6 +14,8 @@ int main() {
     double temp_b[3];
     double origin[3] = {0, 3.14, 0};
     int k[3] = {1, -1, 1};
+    int k_start[3];
+    int k_stop[3];
     double x[3];
     for (k[0] = 1; k[0] <= 5; k[0]++) {
         for (k[1] = -5; k[1] <= -1; k[1]++) {
