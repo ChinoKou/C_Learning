@@ -4,18 +4,9 @@
 int getx(double(*A)[3], double* x, double* b);
 
 int main() {
-    double A[3][3];
-    double x[3];
-    double b[3] = {6.28, 6.28, 6.28};
-    double temp_b[3];
-    double origin[3];
-    double origin_position[3];
-    int k[3];
-    int k_start[3];
-    int k_stop[3];
-    int mode[3][2];
-    int rotation_mode[3][3];
-    int rotation_direction[3];
+    double origin[3], A[3][3], x[3], b[3] = {6.28, 6.28, 6.28}, temp_b[3];
+    int k[3], k_start[3], k_stop[3];
+    int mode[3][2], rotation_direction[3], rotation_mode[3][3] = {0}, origin_position[3];
     char* floor[3] = {"外层", "中层", "内层"};
     printf("输入外层 中层 内层的初始位置 (0 ~ 5) :");
     scanf("%d %d %d", &origin_position[0], &origin_position[1], &origin_position[2]);
@@ -27,23 +18,23 @@ int main() {
         scanf("%d %d", &mode[i - 1][0], &mode[i - 1][1]);
         for (int j = 1; j <= 2; j++) {
             if (mode[i - 1][j - 1]) {
-                printf("输入 %c 的旋转模式 (旋转占比[1 ~ 6]) : ", floor[mode[i - 1][j - 1] - 1]);
+                printf("输入 %s 的旋转模式 (旋转占比[1 ~ 6]) : ", floor[mode[i - 1][j - 1] - 1]);
                 scanf("%d", &rotation_mode[mode[i - 1][j - 1] - 1][i - 1]);
             }
         }
     }
     for (int i = 0; i < 3; i++) {
-        origin[i] = (double)origin_position[i] / 6 * 3.14 * 2;
+        origin[i] = (double)origin_position[i] / 3 * 3.14;
         for (int j = 0; j < 3; j++) {
-            A[i][j] = (double)rotation_mode[i][j] / 6 * 3.14 * 2;
+            A[i][j] = (double)rotation_mode[i][j] / 3 * 3.14;
         }
         if (rotation_direction[i]) {
             k_start[i] = 1;
-            k_stop[i] = 3;
+            k_stop[i] = 5;
         }
         else if (!(rotation_direction[i])) {
-            k_start[i] = -3;
-            k_stop[i] = -1;            
+            k_start[i] = -5;
+            k_stop[i] = -1;
         }
     }
     for (k[0] = k_start[0]; k[0] <= k_stop[0]; k[0]++) {
@@ -57,7 +48,7 @@ int main() {
                 if (getx(A, x, temp_b)) {
                     printf("K1 = %d, K2 = %d, K3 = %d\n", k[0], k[1], k[2]);
                     for (int i = 0; i < 3; i++) {
-                        printf("X%d = %.1lf\n", i + 1, x[i]);
+                        printf("X%d = %.0lf\n", i + 1, x[i]);
                     }
                     printf("\n");
                 }
