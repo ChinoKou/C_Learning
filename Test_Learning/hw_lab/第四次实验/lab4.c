@@ -6,8 +6,9 @@ int main() {
     scanf("%d", &n);
     printf("请输入 %d 阶方阵的元素: ", n);
     for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) 
+        for (int j = 0; j < n; j++) {
             scanf("%d", *(arr + i) + j);
+        }
     }
     for (int i = 0; i < n; i++) {
         int max = *(*(arr + i));
