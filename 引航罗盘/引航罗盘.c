@@ -13,13 +13,13 @@ int main() {
     printf("输入外层 中层 内层的旋转方向 (0 - 逆时针 1 - 顺时针) :");
     scanf("%d %d %d", &rotation_direction[0], &rotation_direction[1], &rotation_direction[2]);
     printf("无 - 0 外层 - 1 中层 - 2 内层 - 3\n");
-    for (int i = 1; i <= 3; i++) {
-        printf("第 %d 种模式:", i);
-        scanf("%d %d", &mode[i - 1][0], &mode[i - 1][1]);
-        for (int j = 1; j <= 2; j++) {
-            if (mode[i - 1][j - 1]) {
-                printf("输入 %s 的旋转模式 (旋转占比[1 ~ 6]) : ", floor[mode[i - 1][j - 1] - 1]);
-                scanf("%d", &rotation_mode[mode[i - 1][j - 1] - 1][i - 1]);
+    for (int i = 0; i < 3; i++) {
+        printf("第 %d 种模式:", i + 1);
+        scanf("%d %d", &mode[i][0], &mode[i][1]);
+        for (int j = 0; j < 2; j++) {
+            if (mode[i][j]) {
+                printf("输入 %s 的旋转模式 (旋转占比[1 ~ 6]) : ", floor[mode[i][j] - 1]);
+                scanf("%d", &rotation_mode[mode[i][j] - 1][i]);
             }
         }
     }
@@ -41,9 +41,7 @@ int main() {
         for (k[1] = k_start[1]; k[1] <= k_stop[1]; k[1]++) {
             for (k[2] = k_start[2]; k[2] <= k_stop[2]; k[2]++) {
                 for (int i = 0; i < 3; i++) {
-                    temp_b[i] = b[i];
-                    temp_b[i] *= k[i];
-                    temp_b[i] -= origin[i];
+                    temp_b[i] = b[i] * k[i] - origin[i];
                 }
                 if (getx(A, x, temp_b)) {
                     printf("K1 = %d, K2 = %d, K3 = %d\n", k[0], k[1], k[2]);
@@ -93,5 +91,7 @@ int getx(double(*origin_A)[3], double* x, double* b) {
         }
         x[i] /= A[i][i];
     }
-    return fabs(x[1] - round(x[1])) <= 0.2 && fabs(x[2] - round(x[2])) <= 0.2 && fabs(x[3] - round(x[3])) <= 0.2;
+    return  fabs(x[1] - round(x[1])) <= 0.1 &&
+            fabs(x[2] - round(x[2])) <= 0.1 &&
+            fabs(x[3] - round(x[3])) <= 0.1;
 }
