@@ -19,7 +19,7 @@ int main() {
     tail = tmp;
     tmp = head;
     while(tmp != NULL) {
-        cout << "号码: " << (*tmp).num << " 名字: " << (*tmp).num << endl;
+        cout << "号码: " << (*tmp).num << " 名字: " << (*tmp).name << endl;
         tmp = (*tmp).next;
     }
     while (head != NULL) {
