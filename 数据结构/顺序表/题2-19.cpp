@@ -30,6 +30,7 @@ int ListDeleteMore(LinkedList* List, DataType x){
         if (tmp->data == x){
             last->next = tmp->next;
             count++;
+            delete tmp;
         }
         else last = tmp;
     }
