@@ -41,11 +41,12 @@ int ListDeleteMore(LinkedList* List, DataType x){
 }
 
 void ListInsert(LinkedList* List, int i, DataType x){
+    LinkedList *tmp = List;
     for (int j = 0; j < i; j++){
-        List = List->next;
+        tmp = tmp->next;
     }
-    LinkedList *tmp = new LinkedList;
-    tmp->data = x;
-    List->next = tmp;
-    tmp->next = List->next;
+    LinkedList *insert = new LinkedList;
+    insert->data = x;
+    tmp->next = insert;
+    insert->next = tmp->next;
 }
