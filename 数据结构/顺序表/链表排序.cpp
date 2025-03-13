@@ -29,9 +29,10 @@ int main(){
     for (tmp = head; tmp->next != nullptr; tmp = tmp->next){
         cout << tmp->data << " ";
     }
-    for (tmp = head; tmp->next != nullptr; tmp = tmp->next){
-        LinkedList* last = tmp;
-        delete last;
+    while (head != nullptr){
+        tmp = head;
+        head = head->next;
+        delete tmp;
     }
 }
 
