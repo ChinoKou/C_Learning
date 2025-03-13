@@ -30,13 +30,14 @@ int main(){
         cout << tmp->data << " ";
     }
     for (tmp = head; tmp->next != nullptr; tmp = tmp->next){
-        delete tmp;
+        LinkedList* last = tmp;
+        delete last;
     }
 }
 
 void ListSort(LinkedList* head){
-    for (tmp_1 = head; tmp_1->next != nullptr; tmp_1 = tmp_1->next){
-        for (tmp_2 = tmp_1; tmp_2->next != nullptr; tmp_2 = tmp_2->next){
+    for (LinkedList* tmp_1 = head; tmp_1->next != nullptr; tmp_1 = tmp_1->next){
+        for (LinkedList* tmp_2 = tmp_1; tmp_2->next != nullptr; tmp_2 = tmp_2->next){
             if (tmp_1->data > tmp_2->data){
                 int tmp = tmp_1->data;
                 tmp_1->data = tmp_2->data;
