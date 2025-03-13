@@ -28,7 +28,7 @@ int main(){
 }
 
 int ListDeleteMore(LinkedList* List, DataType x){
-    int count;
+    int count = 0;
     for (LinkedList *tmp = List, *last = List; tmp != nullptr; tmp = tmp->next){
         if (tmp->data == x){
             last->next = tmp->next;
