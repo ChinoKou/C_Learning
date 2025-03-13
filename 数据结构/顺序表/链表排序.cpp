@@ -35,12 +35,12 @@ int main(){
 }
 
 void ListSort(LinkedList* head){
-    for (int i = 0; i < 10; i++){
-        for (int j = i; j < 10; j++){
-            if (head->data > head->next->data){
-                int tmp = head->data;
-                head->data = head->next->data;
-                head->next->data = tmp;
+    for (tmp_1 = head; tmp_1->next != nullptr; tmp_1 = tmp_1->next){
+        for (tmp_2 = tmp_1; tmp_2->next != nullptr; tmp_2 = tmp_2->next){
+            if (tmp_1->data > tmp_2->data){
+                int tmp = tmp_1->data;
+                tmp_1->data = tmp_2->data;
+                tmp_2->data = tmp;
             }
         }
     }
