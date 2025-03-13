@@ -29,16 +29,18 @@ int main(){
     for (tmp = head; tmp->next != nullptr; tmp = tmp->next){
         cout << tmp->data << " ";
     }
-    while (head != nullptr){
-        tmp = head;
-        head = head->next;
-        delete tmp;
+    LinkedList* del = head;
+    tmp = del;
+    while (tmp != nullptr){
+        del = tmp;
+        tmp = tmp->next;
+        delete del;
     }
 }
 
 void ListSort(LinkedList* head){
-    for (LinkedList* tmp_1 = head; tmp_1->next != nullptr; tmp_1 = tmp_1->next){
-        for (LinkedList* tmp_2 = tmp_1; tmp_2->next != nullptr; tmp_2 = tmp_2->next){
+    for (LinkedList* tmp_1 = head; tmp_1->next->next != nullptr; tmp_1 = tmp_1->next){
+        for (LinkedList* tmp_2 = tmp_1; tmp_2->next->next != nullptr; tmp_2 = tmp_2->next){
             if (tmp_1->data > tmp_2->data){
                 int tmp = tmp_1->data;
                 tmp_1->data = tmp_2->data;
