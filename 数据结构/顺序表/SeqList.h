@@ -1,3 +1,9 @@
+#ifndef MAXSIZE
+#define MAXSIZE 100
+#endif
+#ifndef DataType
+#define DataType int
+#endif
 using namespace std;
 
 typedef struct{

@@ -52,7 +52,12 @@
         "streambuf": "cpp",
         "text_encoding": "cpp",
         "typeinfo": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "cstring": "cpp",
+        "map": "cpp",
+        "fstream": "cpp",
+        "iomanip": "cpp",
+        "sstream": "cpp"
     },
     "Codegeex.RepoIndex": true,
     "C_Cpp.errorSquiggles": "enabled"
