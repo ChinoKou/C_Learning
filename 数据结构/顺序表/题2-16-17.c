@@ -38,7 +38,7 @@ int ListFind(SeqList L, DataType x, int i){
 
 void incremental_list_insert(SeqList* L, DataType x){
     int i;
-    while (L->List[i] < x) i++;
+    while (L->List[i] < x && i < L->Size) i++;
     for (int j = L->Size; j > i; j--){
         L->List[j] = L->List[j - 1];
     }
