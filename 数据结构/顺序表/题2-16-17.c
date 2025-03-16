@@ -1,7 +1,7 @@
 #include <stdio.h>
 #define MAXSIZE 100
 typedef int DataType;
-#include "SeqList.h"
+#include "C_SeqList.h"
 
 int ListFind(SeqList L, DataType x, int i);
 void incremental_list_insert(SeqList* L, DataType x);
@@ -30,7 +30,7 @@ int main(){
 }
 
 int ListFind(SeqList L, DataType x, int i){
-    for (; i < ListLength(L); i++){
+    for (; i < L.Size; i++){
         if (L.List[i] == x) return i;
     }
     return -1;

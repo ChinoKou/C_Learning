@@ -57,7 +57,8 @@
         "map": "cpp",
         "fstream": "cpp",
         "iomanip": "cpp",
-        "sstream": "cpp"
+        "sstream": "cpp",
+        "seqlist.h": "c"
     },
     "Codegeex.RepoIndex": true,
     "C_Cpp.errorSquiggles": "enabled"
