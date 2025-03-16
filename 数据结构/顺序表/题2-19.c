@@ -41,6 +41,7 @@ int ListDeleteMore(LinkedList* List, DataType x){
             last->next = tmp->next;
             count++;
             free(tmp);
+            LinkedList *tmp = last;
         }
         else last = tmp;
     }
@@ -62,6 +63,7 @@ void ListDelete(LinkedList* List, DataType x){
         if (tmp->data == x){
             last->next = tmp->next;
             free(tmp);
+            return;
         }
         else last = tmp;
     }
