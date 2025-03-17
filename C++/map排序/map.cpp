@@ -9,6 +9,7 @@ int main(){
         cin >> x;
         m[x] = x;
     }
+    cout << "排序后" << endl;
     for(auto& item : m) {
         cout << item.second << endl;
     }
