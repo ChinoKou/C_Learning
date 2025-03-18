@@ -6,31 +6,32 @@ typedef struct Polynomial{
     struct Polynomial *next;
 }Polynomial;
 
-void        print            (Polynomial *node);
 void        node_delete      (Polynomial *last);
 void        Polynomial_Sort  (Polynomial *node);
+void        Polynomial_Print (Polynomial *node);
 Polynomial *Polynomial_Create();
-Polynomial *Polynomial_Add   (Polynomial Polynomial_1, Polynomial Polynomial_2);
+Polynomial *Polynomial_Add   (Polynomial polynomial_1, Polynomial polynomial_2);
+Polynomial *Polynomial_Minus (Polynomial polynomial_1, Polynomial polynomial_2);
 
 int main(){
 
     printf("请输入第一个多项式:\n");
     Polynomial *polynomial_1 = Polynomial_Create();
     printf("第一个多项式创建完成,排序和操作重复项后\n");
-    print(polynomial_1);
+    Polynomial_Print(polynomial_1);
 
     printf("请输入第二个多项式:\n");
     Polynomial *polynomial_2 = Polynomial_Create();
     printf("第二个多项式创建完成,排序和操作重复项后\n");
-    print(polynomial_2);
+    Polynomial_Print(polynomial_2);
 
     Polynomial *Polynomial_3 = Polynomial_Add(*polynomial_1, *polynomial_2);
     printf("相加后:\n");
-    print(Polynomial_3);
+    Polynomial_Print(Polynomial_3);
 
 }
 
-void print(Polynomial *node){
+void Polynomial_Print(Polynomial *node){
     for (Polynomial *temp = node; temp != NULL; temp = temp->next){
         printf("%dx^%d", temp->data[0], temp->data[1]);
         if (temp->next != NULL) printf(" + ");
@@ -121,4 +122,8 @@ Polynomial *Polynomial_Add(Polynomial polynomial_1, Polynomial polynomial_2){
     }
     Polynomial_Sort(head);
     return head;
+}
+
+Polynomial *Polynomial_Minus(Polynomial polynomial_1, Polynomial polynomial_2){
+
 }
