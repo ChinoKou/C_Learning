@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <malloc.h>
+#include <stdlib.h>
 
 typedef struct Polynomial{
     int data[2];
@@ -43,10 +43,12 @@ void Polynomial_Print(Polynomial *node){
 }
 
 Polynomial *Polynomial_Input(){
-    int input_data[100][2], count = -1;
+    printf("请输入 n 的值");
+    int n;
+    int (*input_data)[2] = malloc(n * sizeof(int[2]));
+    int count = 0;
     Polynomial *head = NULL, *temp = NULL, *tail = NULL;
-    printf("输入多项式(最后请输入-1 -1以结束):\n");
-    for (int i = 0; input_data[i - 1][0] != -1; i++){
+    for (int i = 0; input_data[i][0] != -1; i++){
         scanf("%d %d", &input_data[i][0], &input_data[i][1]);
         count++;
     }
