@@ -22,7 +22,7 @@ int main(){
     printf("请输入第二个多项式:\n");
     Polynomial *polynomial_2 = Polynomial_Create();
     printf("第二个多项式创建完成,排序和操作重复项后\n");
-    print(polynomial_1);
+    print(polynomial_2);
 
     printf("多项式相加前:\n");
     printf("多项式一:\n");
@@ -97,11 +97,10 @@ void Polynomial_Sort(Polynomial *node){
 }
 
 Polynomial *Polynomial_Add(Polynomial polynomial_1, Polynomial polynomial_2){
-    Polynomial *temp = (Polynomial*)malloc(sizeof(Polynomial));
     for (Polynomial *temp_1 = &polynomial_1; temp_1 != NULL; temp_1 = temp_1->next){
         for (Polynomial *temp_2 = &polynomial_2; temp_2 != NULL; temp_2 = temp_2->next){
-            
+            if (temp_1->data[1] == temp_2->data[1]) temp_2->data[0] += temp_1->data[0];
         }
+        Polynomial *temp = (Polynomial*)malloc(sizeof(Polynomial));
     }
-    return temp;
 }
