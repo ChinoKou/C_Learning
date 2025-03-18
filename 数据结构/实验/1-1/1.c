@@ -18,12 +18,12 @@ Polynomial *Polynomial_Handle(Polynomial polynomial_1, Polynomial polynomial_2, 
 int main(){
     printf("请输入第一个多项式:\n");
     Polynomial *polynomial_1 = Polynomial_Create();
-    printf("第一个多项式创建完成,排序和操作重复项后\n");
+    printf("第一个多项式链表创建完成,排序和操作重复项后:\n");
     Polynomial_Print(polynomial_1);
 
     printf("请输入第二个多项式:\n");
     Polynomial *polynomial_2 = Polynomial_Create();
-    printf("第二个多项式创建完成,排序和操作重复项后\n");
+    printf("第二个多项式链表创建完成,排序和操作重复项后:\n");
     Polynomial_Print(polynomial_2);
 
     Polynomial *polynomial_3 = Polynomial_Add(*polynomial_1, *polynomial_2);
