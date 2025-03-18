@@ -13,6 +13,7 @@ void        Polynomial_Free  (Polynomial *node);
 Polynomial *Polynomial_Create();
 Polynomial *Polynomial_Add   (Polynomial polynomial_1, Polynomial polynomial_2);
 Polynomial *Polynomial_Minus (Polynomial polynomial_1, Polynomial polynomial_2);
+Polynomial *Polynomial_Handle(Polynomial polynomial_1, Polynomial polynomial_2, int mode);
 
 int main(){
     printf("请输入第一个多项式:\n");
@@ -26,11 +27,11 @@ int main(){
     Polynomial_Print(polynomial_2);
 
     Polynomial *polynomial_3 = Polynomial_Add(*polynomial_1, *polynomial_2);
-    printf("相加后:\n");
+    printf("多项式相加并且删除系数为 0 的项和排序后:\n");
     Polynomial_Print(polynomial_3);
 
     Polynomial *polynomial_4 = Polynomial_Minus(*polynomial_1, *polynomial_2);
-    printf("相减后:\n");
+    printf("多项式相减并且删除系数为 0 的项和排序后:\n");
     Polynomial_Print(polynomial_4);
 
     Polynomial_Free(polynomial_1);
@@ -43,8 +44,11 @@ int main(){
 
 void Polynomial_Print(Polynomial *node){
     for (Polynomial *temp = node; temp != NULL; temp = temp->next){
-        printf("%dx^%d", temp->data[0], temp->data[1]);
-        if (temp->next != NULL && temp->next->data[0] > 0) printf("+");
+        if      (temp == node)  printf("%dx^%d",     temp->data[0] , temp->data[1]);
+        else if (temp != node)  printf("%dx^%d", abs(temp->data[0]), temp->data[1]);
+        if      (temp->next == NULL) continue;
+        else if (temp->next->data[0] > 0) printf(" + ");
+        else if (temp->next->data[0] < 0) printf(" - ");
     }
     printf("\n\n");
 }
@@ -113,42 +117,20 @@ void Polynomial_Sort(Polynomial *node){
 }
 
 Polynomial *Polynomial_Add(Polynomial polynomial_1, Polynomial polynomial_2){
-    Polynomial *temp_1, *temp_2, *head = NULL, *last = NULL;
-    for (temp_2 = &polynomial_2; temp_2 != NULL; temp_2 = temp_2->next){
-        Polynomial *temp = (Polynomial*)malloc(sizeof(Polynomial));
-        temp->next = NULL;
-        temp->data[0] = temp_2->data[0];
-        temp->data[1] = temp_2->data[1];
-        if (head == NULL) head = temp;
-        else last->next = temp;
-        last = temp;
-    }
-    for (temp_1 = &polynomial_1; temp_1 != NULL; temp_1 = temp_1->next){
-        int found = 0;
-        for (temp_2 = head; temp_2 != NULL; temp_2 = temp_2->next){
-            if (temp_1->data[1] == temp_2->data[1]){
-                temp_2->data[0] += temp_1->data[0];
-                found = 1;
-            }
-        }
-        if (!found){
-            Polynomial *temp = (Polynomial*)malloc(sizeof(Polynomial));
-            temp->data[0] = temp_1->data[0];
-            temp->data[1] = temp_1->data[1];
-            temp->next = head;
-            head = temp;
-        }
-    }
-    Polynomial_Sort(head);
-    return head;
+    return Polynomial_Handle(polynomial_1, polynomial_2, 1);
 }
 
 Polynomial *Polynomial_Minus(Polynomial polynomial_1, Polynomial polynomial_2){
+    return Polynomial_Handle(polynomial_1, polynomial_2, 2);
+}
+
+Polynomial *Polynomial_Handle(Polynomial polynomial_1, Polynomial polynomial_2, int mode){
     Polynomial *temp_1, *temp_2, *head = NULL, *last = NULL;
     for (temp_2 = &polynomial_2; temp_2 != NULL; temp_2 = temp_2->next){
         Polynomial *temp = (Polynomial*)malloc(sizeof(Polynomial));
         temp->next = NULL;
-        temp->data[0] = 0 - temp_2->data[0];
+        if      (mode == 1) temp->data[0] =     temp_2->data[0];
+        else if (mode == 2) temp->data[0] = 0 - temp_2->data[0];
         temp->data[1] = temp_2->data[1];
         if (head == NULL) head = temp;
         else last->next = temp;
@@ -156,11 +138,13 @@ Polynomial *Polynomial_Minus(Polynomial polynomial_1, Polynomial polynomial_2){
     }
     for (temp_1 = &polynomial_1; temp_1 != NULL; temp_1 = temp_1->next){
         int found = 0;
-        for (temp_2 = head; temp_2 != NULL; temp_2 = temp_2->next){
+        for (temp_2 = head, last = NULL; temp_2 != NULL; temp_2 = temp_2->next){
             if (temp_1->data[1] == temp_2->data[1]){
                 temp_2->data[0] += temp_1->data[0];
+                if (!temp_2->data) node_delete(last);
                 found = 1;
             }
+            last = temp_2;
         }
         if (!found){
             Polynomial *temp = (Polynomial*)malloc(sizeof(Polynomial));
