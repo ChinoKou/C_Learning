@@ -45,7 +45,7 @@ void Polynomial_Print(Polynomial *node){
 }
 
 Polynomial *Polynomial_Input(){
-    int input_data[100][2], count = 0;
+    int input_data[100][2], count = -1;
     Polynomial *head = NULL, *temp = NULL, *tail = NULL;
     printf("输入多项式(最后请输入-1 -1以结束):\n");
     for (int i = 0; input_data[i - 1][0] != -1; i++){
