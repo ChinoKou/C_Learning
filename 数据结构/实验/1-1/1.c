@@ -43,16 +43,13 @@ void Polynomial_Print(Polynomial *node){
 }
 
 Polynomial *Polynomial_Input(){
-    int n, count = 0;
+    int n;
     printf("请输入 n 的值");
     scanf("%d", &n);
-    int (*input_data)[2] = malloc(n * sizeof(int[2]));
+    int (*input_data)[2] = (int(*)[2])malloc(n * sizeof(int[2]));
     Polynomial *head = NULL, *temp = NULL, *tail = NULL;
-    for (int i = 0; input_data[i][0] != -1; i++){
-        scanf("%d %d", &input_data[i][0], &input_data[i][1]);
-        count++;
-    }
-    for (int i = 0; i < count; i++){
+    for (int i = 0; i < n; i++) scanf("%d %d", &input_data[i][0], &input_data[i][1]);
+    for (int i = 0; i < n; i++){
         temp = (Polynomial*)malloc(sizeof(Polynomial));
         temp->data[0] = input_data[i][0];
         temp->data[1] = input_data[i][1];
