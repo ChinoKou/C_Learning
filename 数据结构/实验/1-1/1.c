@@ -55,6 +55,9 @@ Polynomial *Polynomial_Create(){
         temp->next = NULL;
         scanf("%d %d", &(temp->data[0]), &(temp->data[1]));
         if (head == NULL || tail == NULL) head = tail = temp;
+        else if (temp->data[0] == 0){
+            
+        }
         else{
             tail->next = temp;
             tail = temp;
