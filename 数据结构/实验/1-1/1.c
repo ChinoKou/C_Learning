@@ -6,11 +6,11 @@ typedef struct Polynomial{
     struct Polynomial *next;
 }Polynomial;
 
-void        print           (Polynomial *node);
-void        node_delete     (Polynomial *last);
-void        Polynomial_Sort (Polynomial *node);
+void        print            (Polynomial *node);
+void        node_delete      (Polynomial *last);
+void        Polynomial_Sort  (Polynomial *node);
 Polynomial *Polynomial_Create();
-Polynomial *Polynomial_Add  (Polynomial Polynomial_1, Polynomial Polynomial_2);
+Polynomial *Polynomial_Add   (Polynomial Polynomial_1, Polynomial Polynomial_2);
 
 int main(){
 
@@ -36,8 +36,10 @@ int main(){
 
 void print(Polynomial *node){
     for (Polynomial *temp = node; temp != NULL; temp = temp->next){
-        printf("%dX^%d+", temp->data[0], temp->data[1]);
+        printf("%dx^%d", temp->data[0], temp->data[1]);
+        if (temp->next != NULL) printf("+");
     }
+    printf("\n");
 }
 
 void node_delete(Polynomial *last){
@@ -49,7 +51,7 @@ void node_delete(Polynomial *last){
 Polynomial *Polynomial_Create(){
     int n, input_data[2];
     Polynomial *head = NULL, *temp = NULL, *tail = NULL;
-    printf("请输入 n 的值");
+    printf("请输入 n 的值:\n");
     scanf("%d", &n);
     printf("输入 %d 组元素:\n", n);
     for (int i = 0; i < n; i++){
