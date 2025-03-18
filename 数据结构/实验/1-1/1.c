@@ -33,7 +33,7 @@ int main(){
 void print(Polynomial *node){
     for (Polynomial *temp = node; temp != NULL; temp = temp->next){
         printf("%dx^%d", temp->data[0], temp->data[1]);
-        if (temp->next != NULL) printf("+");
+        if (temp->next != NULL) printf(" + ");
     }
     printf("\n");
 }
@@ -47,9 +47,9 @@ void node_delete(Polynomial *last){
 Polynomial *Polynomial_Create(){
     int n, input_data[2];
     Polynomial *head = NULL, *temp = NULL, *tail = NULL;
-    printf("请输入 n 的值:\n");
+    printf("请输入 n 的值: ");
     scanf("%d", &n);
-    printf("输入 %d 组元素:\n", n);
+    printf("输入 %d 组元素: ", n);
     for (int i = 0; i < n; i++){
         temp = (Polynomial*)malloc(sizeof(Polynomial));
         temp->next = NULL;
@@ -93,10 +93,10 @@ void Polynomial_Sort(Polynomial *node){
 }
 
 Polynomial *Polynomial_Add(Polynomial polynomial_1, Polynomial polynomial_2){
-    int found = 0;
     Polynomial *temp_1, *temp_2, *head = NULL, *last = NULL;
     for (temp_2 = &polynomial_2; temp_2 != NULL; temp_2 = temp_2->next){
         Polynomial *temp = (Polynomial*)malloc(sizeof(Polynomial));
+        temp->next = NULL;
         temp->data[0] = temp_2->data[0];
         temp->data[1] = temp_2->data[1];
         if (head == NULL) head = temp;
@@ -104,6 +104,7 @@ Polynomial *Polynomial_Add(Polynomial polynomial_1, Polynomial polynomial_2){
         last = temp;
     }
     for (temp_1 = &polynomial_1; temp_1 != NULL; temp_1 = temp_1->next){
+        int found = 0;
         for (temp_2 = head; temp_2 != NULL; temp_2 = temp_2->next){
             if (temp_1->data[1] == temp_2->data[1]){
                 temp_2->data[0] += temp_1->data[0];
