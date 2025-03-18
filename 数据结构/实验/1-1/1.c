@@ -33,7 +33,7 @@ int main(){
     printf("多项式二:\n");
     Polynomial_Print(Polynomial_2);
 
-    Polynomial_Add(*Polynomial_1, *Polynomial_2);
+    //Polynomial_Add(*Polynomial_1, *Polynomial_2);
 
     printf("相加后:\n");
 }
@@ -45,13 +45,17 @@ void Polynomial_Print(Polynomial *node){
 }
 
 Polynomial *Polynomial_Input(){
-    int input_1, input_2;
+    int input_data[100][2], count = 0;
     Polynomial *head = NULL, *temp = NULL, *tail = NULL;
-    printf("输入多项式(最后请输入Ctrl+Z以结束):\n");
-    while (scanf("%d %d", &input_1, &input_2) == 2){
+    printf("输入多项式(最后请输入-1 -1以结束):\n");
+    for (int i = 0; input_data[i - 1][0] != -1; i++){
+        scanf("%d %d", &input_data[i][0], &input_data[i][1]);
+        count++;
+    }
+    for (int i = 0; i < count; i++){
         temp = (Polynomial*)malloc(sizeof(Polynomial));
-        temp->data[0] = input_1;
-        temp->data[1] = input_2;
+        temp->data[0] = input_data[i][0];
+        temp->data[1] = input_data[i][1];
         temp->next = NULL;
         if (head == NULL || tail == NULL) head = tail = temp;
         else if (tail->data[1] == temp->data[1]){
@@ -62,7 +66,7 @@ Polynomial *Polynomial_Input(){
             scanf("%d", &choice);
             if      (choice == 1) continue;
             else if (choice == 2) for (int i = 0; i < 2; i++) tail->data[i] = temp->data[i];
-            else if (choice == 3) for (int i = 0; i < 2; i++) tail->data[i] += temp->data[i];
+            else if (choice == 3) for (int i = 0; i < 2; i++) tail->data[0] += temp->data[0];
         }
         else{
             tail->next = temp;
@@ -84,6 +88,5 @@ void Polynomial_Sort(Polynomial *node){
     }
 }
 
-Polynomial *Polynomial_Add(Polynomial Polynomial_1, Polynomial Polynomial_2){
-    
-}
+// Polynomial *Polynomial_Add(Polynomial Polynomial_1, Polynomial Polynomial_2){
+// }
