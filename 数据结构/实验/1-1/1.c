@@ -15,21 +15,21 @@ Polynomial *Polynomial_Add   (Polynomial Polynomial_1, Polynomial Polynomial_2);
 int main(){
 
     printf("请输入第一个多项式:\n");
-    Polynomial *Polynomial_1 = Polynomial_Create();
+    Polynomial *polynomial_1 = Polynomial_Create();
     printf("第一个多项式创建完成,排序和操作重复项后\n");
-    print(Polynomial_1);
+    print(polynomial_1);
 
     printf("请输入第二个多项式:\n");
-    Polynomial *Polynomial_2 = Polynomial_Create();
+    Polynomial *polynomial_2 = Polynomial_Create();
     printf("第二个多项式创建完成,排序和操作重复项后\n");
-    print(Polynomial_1);
+    print(polynomial_1);
 
     printf("多项式相加前:\n");
     printf("多项式一:\n");
-    print(Polynomial_1);
+    print(polynomial_1);
     printf("多项式二:\n");
-    print(Polynomial_2);
-    Polynomial *Polynomial_3 = Polynomial_Add(*Polynomial_1, *Polynomial_2);
+    print(polynomial_2);
+    Polynomial *Polynomial_3 = Polynomial_Add(*polynomial_1, *polynomial_2);
     printf("相加后:\n");
 
 }
@@ -96,16 +96,12 @@ void Polynomial_Sort(Polynomial *node){
     }
 }
 
-Polynomial *Polynomial_Add(Polynomial Polynomial_1, Polynomial Polynomial_2){
+Polynomial *Polynomial_Add(Polynomial polynomial_1, Polynomial polynomial_2){
     // Polynomial *temp = (Polynomial*)malloc(sizeof(Polynomial));
-    Polynomial (*polynomials)[2] = {&Polynomial_1, &Polynomial_2};
-    int max = 0;;
-    for (int i = 0; i < 2; i++){
-        for (Polynomial *temp = polynomials[i]; temp != NULL; temp = temp->next){
-            max = temp->data[1];
+    for (Polynomial *temp_1 = &polynomial_1; temp_1 != NULL; temp_1 = temp_1->next){
+        for (Polynomial *temp_2 = &polynomial_2; temp_2 != NULL; temp_2 = temp_2->next){
+            
         }
     }
-    int (*arr)[3] = (int*)malloc(max * 2 * sizeof(int));
-    
     // return temp;
 }
