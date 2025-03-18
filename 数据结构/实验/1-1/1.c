@@ -125,5 +125,5 @@ Polynomial *Polynomial_Add(Polynomial polynomial_1, Polynomial polynomial_2){
 }
 
 Polynomial *Polynomial_Minus(Polynomial polynomial_1, Polynomial polynomial_2){
-
+    
 }
