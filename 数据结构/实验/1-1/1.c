@@ -9,12 +9,12 @@ typedef struct Polynomial{
 void        node_delete      (Polynomial *last);
 void        Polynomial_Sort  (Polynomial *node);
 void        Polynomial_Print (Polynomial *node);
+void        Polynomial_Free  (Polynomial *node);
 Polynomial *Polynomial_Create();
 Polynomial *Polynomial_Add   (Polynomial polynomial_1, Polynomial polynomial_2);
 Polynomial *Polynomial_Minus (Polynomial polynomial_1, Polynomial polynomial_2);
 
 int main(){
-
     printf("请输入第一个多项式:\n");
     Polynomial *polynomial_1 = Polynomial_Create();
     printf("第一个多项式创建完成,排序和操作重复项后\n");
@@ -33,6 +33,12 @@ int main(){
     printf("相减后:\n");
     Polynomial_Print(polynomial_4);
 
+    Polynomial_Free(polynomial_1);
+    Polynomial_Free(polynomial_2);
+    Polynomial_Free(polynomial_3);
+    Polynomial_Free(polynomial_4);
+
+    return 0;
 }
 
 void Polynomial_Print(Polynomial *node){
@@ -40,7 +46,16 @@ void Polynomial_Print(Polynomial *node){
         printf("%dx^%d", temp->data[0], temp->data[1]);
         if (temp->next != NULL && temp->next->data[0] > 0) printf("+");
     }
-    printf("\n");
+    printf("\n\n");
+}
+
+void Polynomial_Free(Polynomial *node) {
+    Polynomial *temp = node;
+    while (temp != NULL) {
+        Polynomial *next = temp->next;
+        free(temp);
+        temp = next;
+    }
 }
 
 void node_delete(Polynomial *last){
