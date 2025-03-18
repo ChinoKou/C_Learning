@@ -25,9 +25,13 @@ int main(){
     printf("第二个多项式创建完成,排序和操作重复项后\n");
     Polynomial_Print(polynomial_2);
 
-    Polynomial *Polynomial_3 = Polynomial_Add(*polynomial_1, *polynomial_2);
+    Polynomial *polynomial_3 = Polynomial_Add(*polynomial_1, *polynomial_2);
     printf("相加后:\n");
-    Polynomial_Print(Polynomial_3);
+    Polynomial_Print(polynomial_3);
+
+    Polynomial *polynomial_4 = Polynomial_Add(*polynomial_1, *polynomial_2);
+    printf("相减后:\n");
+    Polynomial_Print(polynomial_4);
 
 }
 
@@ -125,5 +129,32 @@ Polynomial *Polynomial_Add(Polynomial polynomial_1, Polynomial polynomial_2){
 }
 
 Polynomial *Polynomial_Minus(Polynomial polynomial_1, Polynomial polynomial_2){
-    
+    Polynomial *temp_1, *temp_2, *head = NULL, *last = NULL;
+    for (temp_2 = &polynomial_2; temp_2 != NULL; temp_2 = temp_2->next){
+        Polynomial *temp = (Polynomial*)malloc(sizeof(Polynomial));
+        temp->next = NULL;
+        temp->data[0] = 0 - temp_2->data[0];
+        temp->data[1] = temp_2->data[1];
+        if (head == NULL) head = temp;
+        else last->next = temp;
+        last = temp;
+    }
+    for (temp_1 = &polynomial_1; temp_1 != NULL; temp_1 = temp_1->next){
+        int found = 0;
+        for (temp_2 = head; temp_2 != NULL; temp_2 = temp_2->next){
+            if (temp_1->data[1] == temp_2->data[1]){
+                temp_2->data[0] += temp_1->data[0];
+                found = 1;
+            }
+        }
+        if (!found){
+            Polynomial *temp = (Polynomial*)malloc(sizeof(Polynomial));
+            temp->data[0] = temp_1->data[0];
+            temp->data[1] = temp_1->data[1];
+            temp->next = head;
+            head = temp;
+        }
+    }
+    Polynomial_Sort(head);
+    return head;
 }
