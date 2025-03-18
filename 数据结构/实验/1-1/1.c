@@ -6,72 +6,87 @@ typedef struct Polynomial{
     struct Polynomial *next;
 }Polynomial;
 
-Polynomial *Polynomial_Input();
-void Print(Polynomial *node);
-void Polynomial_Sort (Polynomial *node);
+void        print           (Polynomial *node);
+void        node_delete     (Polynomial *last);
+void        Polynomial_Sort (Polynomial *node);
+Polynomial *Polynomial_Create();
 Polynomial *Polynomial_Add  (Polynomial Polynomial_1, Polynomial Polynomial_2);
 
 int main(){
+
     printf("请输入第一个多项式:\n");
-    Polynomial *Polynomial_1 = Polynomial_Input();
-
-    printf("排序前:\n");
-    Print(Polynomial_1);
-
-    Polynomial_Sort(Polynomial_1);
-
-    printf("\n排序后:\n");
-    Print(Polynomial_1);
+    Polynomial *Polynomial_1 = Polynomial_Create();
+    printf("第一个多项式创建完成,排序和操作重复项后\n");
+    print(Polynomial_1);
 
     printf("请输入第二个多项式:\n");
-    Polynomial *Polynomial_2 = Polynomial_Input();
-    Polynomial_Sort(Polynomial_2);
+    Polynomial *Polynomial_2 = Polynomial_Create();
+    printf("第二个多项式创建完成,排序和操作重复项后\n");
+    print(Polynomial_1);
 
     printf("多项式相加前:\n");
     printf("多项式一:\n");
-    Print(Polynomial_1);
+    print(Polynomial_1);
     printf("多项式二:\n");
-    Print(Polynomial_2);
-    Polynomial_Add(*Polynomial_1, *Polynomial_2);
+    print(Polynomial_2);
+    Polynomial *Polynomial_3 = Polynomial_Add(*Polynomial_1, *Polynomial_2);
     printf("相加后:\n");
 }
 
-void Print(Polynomial *node){
+void print(Polynomial *node){
     for (Polynomial *temp = node; temp != NULL; temp = temp->next){
         printf("%dX^%d+", temp->data[0], temp->data[1]);
     }
 }
 
-Polynomial *Polynomial_Input(){
-    int n;
+void node_delete(Polynomial *last){
+    Polynomial *temp = last->next;
+    last->next = temp->next;
+    free(temp);
+}
+
+Polynomial *Polynomial_Create(){
+    int n, input_data[2];
     printf("请输入 n 的值");
     scanf("%d", &n);
-    int (*input_data)[2] = (int(*)[2])malloc(n * sizeof(int[2]));
     Polynomial *head = NULL, *temp = NULL, *tail = NULL;
-    for (int i = 0; i < n; i++) scanf("%d %d", &input_data[i][0], &input_data[i][1]);
     for (int i = 0; i < n; i++){
         temp = (Polynomial*)malloc(sizeof(Polynomial));
-        temp->data[0] = input_data[i][0];
-        temp->data[1] = input_data[i][1];
         temp->next = NULL;
+        scanf("%d %d", &(temp->data[0]), &(temp->data[1]));
         if (head == NULL || tail == NULL) head = tail = temp;
-        else if (tail->data[1] == temp->data[1]){
-            int choice;
-            printf("两项指数相同\n");
-            printf("%dx^%d %dx^%d\n", tail->data[0], tail->data[1], temp->data[0], temp->data[1]);
-            printf("请选择: 1-舍弃 2-覆盖 3-系数相加\n");
-            scanf("%d", &choice);
-            if      (choice == 1) continue;
-            else if (choice == 2) for (int i = 0; i < 2; i++) tail->data[i] = temp->data[i];
-            else if (choice == 3) tail->data[0] += temp->data[0];
-        }
         else{
             tail->next = temp;
             tail = temp;
         }
     }
+    Polynomial_Sort(head);
+    for (Polynomial *last = head, *temp = head; temp != NULL; temp = temp->next){
+        if (temp->data[0] == 0 && temp != head){
+            node_delete(last);
+            temp = last;
+        }
+        else if (temp->data[0] == 0 && temp == head){
+            head = head->next;
+            free(temp);
+            temp = head;
+        }
+        if (last->data[1] == temp->data[1]){
+            int choice;
+            printf("两项指数相同\n");
+            printf("%dx^%d %dx^%d\n", tail->data[0], tail->data[1], temp->data[0], temp->data[1]);
+            printf("请选择: 1-舍弃 2-覆盖 3-系数相加\n");
+            scanf("%d", &choice);
+            if      (choice == 2) for(int i = 0; i < 2; i++) last->data[i] = temp->data[i];
+            else if (choice == 3) last->data[0] += temp->data[0];
+            node_delete(last);
+            temp = last;
+        }
+        last = temp;
+    }
     return head;
 }
+
 void Polynomial_Sort(Polynomial *node){
     for (Polynomial *temp_1 = node; temp_1 != NULL; temp_1 = temp_1->next){
         for (Polynomial *temp_2 = temp_1; temp_2 != NULL; temp_2 = temp_2->next){
@@ -86,4 +101,5 @@ void Polynomial_Sort(Polynomial *node){
 }
 
 Polynomial *Polynomial_Add(Polynomial Polynomial_1, Polynomial Polynomial_2){
+
 }
