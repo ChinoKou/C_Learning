@@ -12,28 +12,28 @@ void        Polynomial_Sort (Polynomial *node);
 // Polynomial *Polynomial_Add  (Polynomial Polynomial_1, Polynomial Polynomial_2);
 
 int main(){
-    printf("è¯·è¾“å…¥ç¬¬ä¸€ä¸ªå¤šé¡¹å¼:\n");
+    printf("ÇëÊäÈëµÚÒ»¸ö¶àÏîÊ½:\n");
     Polynomial *Polynomial_1 = Polynomial_Input();
 
-    printf("æ’åºå‰:\n");
+    printf("ÅÅĞòÇ°:\n");
     Polynomial_Print(Polynomial_1);
 
     Polynomial_Sort(Polynomial_1);
 
-    printf("\næ’åºå:\n");
+    printf("\nÅÅĞòºó:\n");
     Polynomial_Print(Polynomial_1);
 
-    // printf("è¯·è¾“å…¥ç¬¬äºŒä¸ªå¤šé¡¹å¼:\n");
+    // printf("ÇëÊäÈëµÚ¶ş¸ö¶àÏîÊ½:\n");
     // Polynomial *Polynomial_2 = Polynomial_Input();
     // Polynomial_Sort(Polynomial_2);
 
-    // printf("å¤šé¡¹å¼ç›¸åŠ å‰:\n");
-    // printf("å¤šé¡¹å¼ä¸€:\n");
+    // printf("¶àÏîÊ½Ïà¼ÓÇ°:\n");
+    // printf("¶àÏîÊ½Ò»:\n");
     // Polynomial_Print(Polynomial_1);
-    // printf("å¤šé¡¹å¼äºŒ:\n");
+    // printf("¶àÏîÊ½¶ş:\n");
     // Polynomial_Print(Polynomial_2);
     // Polynomial_Add(*Polynomial_1, *Polynomial_2);
-    // printf("ç›¸åŠ å:\n");
+    // printf("Ïà¼Óºó:\n");
 }
 
 void Polynomial_Print(Polynomial *node){
@@ -45,7 +45,7 @@ void Polynomial_Print(Polynomial *node){
 Polynomial *Polynomial_Input(){
     int input_data[100][2], count = -1;
     Polynomial *head = NULL, *temp = NULL, *tail = NULL;
-    printf("è¾“å…¥å¤šé¡¹å¼(æœ€åè¯·è¾“å…¥-1 -1ä»¥ç»“æŸ):\n");
+    printf("ÊäÈë¶àÏîÊ½(×îºóÇëÊäÈë-1 -1ÒÔ½áÊø):\n");
     for (int i = 0; input_data[i - 1][0] != -1; i++){
         scanf("%d %d", &input_data[i][0], &input_data[i][1]);
         count++;
@@ -58,9 +58,9 @@ Polynomial *Polynomial_Input(){
         if (head == NULL || tail == NULL) head = tail = temp;
         else if (tail->data[1] == temp->data[1]){
             int choice;
-            printf("ä¸¤é¡¹æŒ‡æ•°ç›¸åŒ\n");
+            printf("Á½ÏîÖ¸ÊıÏàÍ¬\n");
             printf("%dx^%d %dx^%d\n", tail->data[0], tail->data[1], temp->data[0], temp->data[1]);
-            printf("è¯·é€‰æ‹©: 1-èˆå¼ƒ 2-è¦†ç›– 3-ç³»æ•°ç›¸åŠ \n");
+            printf("ÇëÑ¡Ôñ: 1-ÉáÆú 2-¸²¸Ç 3-ÏµÊıÏà¼Ó\n");
             scanf("%d", &choice);
             if      (choice == 1) continue;
             else if (choice == 2) for (int i = 0; i < 2; i++) tail->data[i] =  temp->data[i];
