@@ -85,5 +85,5 @@ void Polynomial_Sort(Polynomial *node){
     }
 }
 
-// Polynomial *Polynomial_Add(Polynomial Polynomial_1, Polynomial Polynomial_2){
-// }
+Polynomial *Polynomial_Add(Polynomial Polynomial_1, Polynomial Polynomial_2){
+}
