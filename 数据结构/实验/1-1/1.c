@@ -65,7 +65,7 @@ Polynomial *Polynomial_Input(){
             printf("请选择: 1-舍弃 2-覆盖 3-系数相加\n");
             scanf("%d", &choice);
             if      (choice == 1) continue;
-            else if (choice == 2) for (int i = 0; i < 2; i++) tail->data[i] = temp->data[i];
+            else if (choice == 2) for (int i = 0; i < 2; i++) tail->data[i] =  temp->data[i];
             else if (choice == 3) for (int i = 0; i < 2; i++) tail->data[0] += temp->data[0];
         }
         else{
