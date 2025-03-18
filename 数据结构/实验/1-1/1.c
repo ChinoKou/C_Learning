@@ -7,36 +7,36 @@ typedef struct Polynomial{
 }Polynomial;
 
 Polynomial *Polynomial_Input();
-void        Polynomial_Print(Polynomial *node);
-void        Polynomial_Sort (Polynomial *node);
-// Polynomial *Polynomial_Add  (Polynomial Polynomial_1, Polynomial Polynomial_2);
+void Print(Polynomial *node);
+void Polynomial_Sort (Polynomial *node);
+Polynomial *Polynomial_Add  (Polynomial Polynomial_1, Polynomial Polynomial_2);
 
 int main(){
     printf("请输入第一个多项式:\n");
     Polynomial *Polynomial_1 = Polynomial_Input();
 
     printf("排序前:\n");
-    Polynomial_Print(Polynomial_1);
+    Print(Polynomial_1);
 
     Polynomial_Sort(Polynomial_1);
 
     printf("\n排序后:\n");
-    Polynomial_Print(Polynomial_1);
+    Print(Polynomial_1);
 
-    // printf("请输入第二个多项式:\n");
-    // Polynomial *Polynomial_2 = Polynomial_Input();
-    // Polynomial_Sort(Polynomial_2);
+    printf("请输入第二个多项式:\n");
+    Polynomial *Polynomial_2 = Polynomial_Input();
+    Polynomial_Sort(Polynomial_2);
 
-    // printf("多项式相加前:\n");
-    // printf("多项式一:\n");
-    // Polynomial_Print(Polynomial_1);
-    // printf("多项式二:\n");
-    // Polynomial_Print(Polynomial_2);
-    // Polynomial_Add(*Polynomial_1, *Polynomial_2);
-    // printf("相加后:\n");
+    printf("多项式相加前:\n");
+    printf("多项式一:\n");
+    Print(Polynomial_1);
+    printf("多项式二:\n");
+    Print(Polynomial_2);
+    Polynomial_Add(*Polynomial_1, *Polynomial_2);
+    printf("相加后:\n");
 }
 
-void Polynomial_Print(Polynomial *node){
+void Print(Polynomial *node){
     for (Polynomial *temp = node; temp != NULL; temp = temp->next){
         printf("%dX^%d+", temp->data[0], temp->data[1]);
     }
@@ -62,7 +62,7 @@ Polynomial *Polynomial_Input(){
             printf("请选择: 1-舍弃 2-覆盖 3-系数相加\n");
             scanf("%d", &choice);
             if      (choice == 1) continue;
-            else if (choice == 2) for (int i = 0; i < 2; i++) tail->data[i] =  temp->data[i];
+            else if (choice == 2) for (int i = 0; i < 2; i++) tail->data[i] = temp->data[i];
             else if (choice == 3) tail->data[0] += temp->data[0];
         }
         else{
