@@ -97,7 +97,15 @@ void Polynomial_Sort(Polynomial *node){
 }
 
 Polynomial *Polynomial_Add(Polynomial Polynomial_1, Polynomial Polynomial_2){
-
-    Polynomial *temp = (Polynomial*)malloc(sizeof(Polynomial));
-    return temp;
+    // Polynomial *temp = (Polynomial*)malloc(sizeof(Polynomial));
+    Polynomial (*polynomials)[2] = {&Polynomial_1, &Polynomial_2};
+    int max = 0;;
+    for (int i = 0; i < 2; i++){
+        for (Polynomial *temp = polynomials[i]; temp != NULL; temp = temp->next){
+            max = temp->data[1];
+        }
+    }
+    int (*arr)[3] = (int*)malloc(max * 2 * sizeof(int));
+    
+    // return temp;
 }
