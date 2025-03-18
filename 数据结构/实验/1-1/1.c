@@ -101,6 +101,7 @@ void Polynomial_Sort(Polynomial *node){
 }
 
 Polynomial *Polynomial_Add(Polynomial Polynomial_1, Polynomial Polynomial_2){
+
     Polynomial *temp = (Polynomial*)malloc(sizeof(Polynomial));
     return temp;
 }
