@@ -29,7 +29,7 @@ int main(){
     printf("相加后:\n");
     Polynomial_Print(polynomial_3);
 
-    Polynomial *polynomial_4 = Polynomial_Add(*polynomial_1, *polynomial_2);
+    Polynomial *polynomial_4 = Polynomial_Minus(*polynomial_1, *polynomial_2);
     printf("相减后:\n");
     Polynomial_Print(polynomial_4);
 
@@ -38,7 +38,7 @@ int main(){
 void Polynomial_Print(Polynomial *node){
     for (Polynomial *temp = node; temp != NULL; temp = temp->next){
         printf("%dx^%d", temp->data[0], temp->data[1]);
-        if (temp->next != NULL) printf(" + ");
+        if (temp->next != NULL && temp->next->data[0] > 0) printf("+");
     }
     printf("\n");
 }
