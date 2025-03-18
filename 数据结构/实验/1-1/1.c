@@ -6,5 +6,5 @@ typedef struct node{
 }node;
 
 int main(){
-    
+    int input_1, input_2;
 }
