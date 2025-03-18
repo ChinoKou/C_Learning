@@ -9,7 +9,7 @@ typedef struct Polynomial{
 Polynomial *Polynomial_Input();
 void        Polynomial_Print(Polynomial *node);
 void        Polynomial_Sort (Polynomial *node);
-Polynomial *Polynomial_Add  (Polynomial Polynomial_1, Polynomial Polynomial_2);
+// Polynomial *Polynomial_Add  (Polynomial Polynomial_1, Polynomial Polynomial_2);
 
 int main(){
     printf("请输入第一个多项式:\n");
@@ -23,19 +23,17 @@ int main(){
     printf("\n排序后:\n");
     Polynomial_Print(Polynomial_1);
 
-    printf("请输入第二个多项式:\n");
-    Polynomial *Polynomial_2 = Polynomial_Input();
-    Polynomial_Sort(Polynomial_2);
+    // printf("请输入第二个多项式:\n");
+    // Polynomial *Polynomial_2 = Polynomial_Input();
+    // Polynomial_Sort(Polynomial_2);
 
-    printf("多项式相加前:\n");
-    printf("多项式一:\n");
-    Polynomial_Print(Polynomial_1);
-    printf("多项式二:\n");
-    Polynomial_Print(Polynomial_2);
-
-    //Polynomial_Add(*Polynomial_1, *Polynomial_2);
-
-    printf("相加后:\n");
+    // printf("多项式相加前:\n");
+    // printf("多项式一:\n");
+    // Polynomial_Print(Polynomial_1);
+    // printf("多项式二:\n");
+    // Polynomial_Print(Polynomial_2);
+    // Polynomial_Add(*Polynomial_1, *Polynomial_2);
+    // printf("相加后:\n");
 }
 
 void Polynomial_Print(Polynomial *node){
@@ -66,7 +64,7 @@ Polynomial *Polynomial_Input(){
             scanf("%d", &choice);
             if      (choice == 1) continue;
             else if (choice == 2) for (int i = 0; i < 2; i++) tail->data[i] =  temp->data[i];
-            else if (choice == 3) for (int i = 0; i < 2; i++) tail->data[0] += temp->data[0];
+            else if (choice == 3) tail->data[0] += temp->data[0];
         }
         else{
             tail->next = temp;
