@@ -24,13 +24,9 @@ int main(){
     printf("第二个多项式创建完成,排序和操作重复项后\n");
     print(polynomial_2);
 
-    printf("多项式相加前:\n");
-    printf("多项式一:\n");
-    print(polynomial_1);
-    printf("多项式二:\n");
-    print(polynomial_2);
     Polynomial *Polynomial_3 = Polynomial_Add(*polynomial_1, *polynomial_2);
     printf("相加后:\n");
+    print(Polynomial_3);
 
 }
 
