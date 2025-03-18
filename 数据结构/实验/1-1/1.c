@@ -1,14 +1,50 @@
 #include <stdio.h>
 #include <malloc.h>
+
 typedef struct Polynomial{
     int data[2];
     struct Polynomial *next;
 }Polynomial;
 
-void Polynomial_Sort(Polynomial *node);
-Polynomial* Polynomial_Add(int item_1, int item_2);
+Polynomial *Polynomial_Input();
+void        Polynomial_Print(Polynomial *node);
+void        Polynomial_Sort (Polynomial *node);
+Polynomial *Polynomial_Add  (Polynomial Polynomial_1, Polynomial Polynomial_2);
 
 int main(){
+    printf("请输入第一个多项式:\n");
+    Polynomial *Polynomial_1 = Polynomial_Input();
+
+    printf("排序前:\n");
+    Polynomial_Print(Polynomial_1);
+
+    Polynomial_Sort(Polynomial_1);
+
+    printf("\n排序后:\n");
+    Polynomial_Print(Polynomial_1);
+
+    printf("请输入第二个多项式:\n");
+    Polynomial *Polynomial_2 = Polynomial_Input();
+    Polynomial_Sort(Polynomial_2);
+
+    printf("多项式相加前:\n");
+    printf("多项式一:\n");
+    Polynomial_Print(Polynomial_1);
+    printf("多项式二:\n");
+    Polynomial_Print(Polynomial_2);
+
+    Polynomial_Add(*Polynomial_1, *Polynomial_2);
+
+    printf("相加后:\n");
+}
+
+void Polynomial_Print(Polynomial *node){
+    for (Polynomial *temp = node; temp != NULL; temp = temp->next){
+        printf("%dX^%d+", temp->data[0], temp->data[1]);
+    }
+}
+
+Polynomial *Polynomial_Input(){
     int input_1, input_2;
     Polynomial *head = NULL, *temp = NULL, *tail = NULL;
     printf("输入多项式(最后请输入Ctrl+Z以结束):\n");
@@ -33,29 +69,8 @@ int main(){
             tail = temp;
         }
     }
-
-    printf("排序前:\n");
-    for (temp = head; temp != NULL; temp = temp->next){
-        printf("%dX^%d+", temp->data[0], temp->data[1]);
-    }
-
-    Polynomial_Sort(head);
-
-    printf("\n排序后:\n");
-    for (temp = head; temp != NULL; temp = temp->next){
-        printf("%dX^%d+", temp->data[0], temp->data[1]);
-    }
-
-    printf("\n输入要将第几项与第几项相加:\n");
-    int item_1, item_2;
-    scanf("%d %d", &item_1, &item_2);
-    Polynomial_Add(item_1, item_2);
-    printf("相加后:\n");
-    for (temp = head; temp != NULL; temp = temp->next){
-        printf("%dX^%d+", temp->data[0], temp->data[1]);
-    }
+    return head;
 }
-
 void Polynomial_Sort(Polynomial *node){
     for (Polynomial *temp_1 = node; temp_1 != NULL; temp_1 = temp_1->next){
         for (Polynomial *temp_2 = temp_1; temp_2 != NULL; temp_2 = temp_2->next){
@@ -69,6 +84,6 @@ void Polynomial_Sort(Polynomial *node){
     }
 }
 
-Polynomial* Polynomial_Add(int item_1, int item_2){
+Polynomial *Polynomial_Add(Polynomial Polynomial_1, Polynomial Polynomial_2){
     
 }
