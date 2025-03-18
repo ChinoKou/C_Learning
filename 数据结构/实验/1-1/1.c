@@ -97,11 +97,11 @@ void Polynomial_Sort(Polynomial *node){
 }
 
 Polynomial *Polynomial_Add(Polynomial polynomial_1, Polynomial polynomial_2){
-    // Polynomial *temp = (Polynomial*)malloc(sizeof(Polynomial));
+    Polynomial *temp = (Polynomial*)malloc(sizeof(Polynomial));
     for (Polynomial *temp_1 = &polynomial_1; temp_1 != NULL; temp_1 = temp_1->next){
         for (Polynomial *temp_2 = &polynomial_2; temp_2 != NULL; temp_2 = temp_2->next){
             
         }
     }
-    // return temp;
+    return temp;
 }
