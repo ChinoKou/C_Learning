@@ -142,13 +142,21 @@ Polynomial *Polynomial_Handle(Polynomial polynomial_1, Polynomial polynomial_2, 
             if (temp_1->data[1] == temp_2->data[1]){
                 temp_2->data[0] += temp_1->data[0];
                 if (!(temp_2->data[0])){
-                    
-                    node_delete(last);
+                    if (last == NULL){
+                        Polynomial *temp = head;
+                        head = head->next;
+                        free(temp);
+                        temp_2 = head;
+                    }
+                    else if (last != NULL){
+                        node_delete(last);
+                        temp_2 = last;
+                    }
                 }
-                temp_2 = last;
                 found = 1;
+                break;
             }
-            else last = temp_2;
+            last = temp_2;
         }
         if (!found){
             Polynomial *temp = (Polynomial*)malloc(sizeof(Polynomial));
