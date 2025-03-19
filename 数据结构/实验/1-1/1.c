@@ -50,6 +50,24 @@ void Polynomial_Print(Polynomial *node){
         else if (temp->next->data[0] > 0) printf(" + ");
         else if (temp->next->data[0] < 0) printf(" - ");
     }
+    if (node == NULL) {
+        printf("0\n\n");
+        return;
+    }
+    Polynomial *temp = node;
+    // 处理第一个节点
+    printf("%dx^%d", temp->data[0], temp->data[1]);
+    temp = temp->next;
+    while (temp != NULL) {
+        // 根据当前节点的系数符号输出+或-
+        if (temp->data[0] >= 0) {
+            printf(" + ");
+        } else {
+            printf(" - ");
+        }
+        printf("%dx^%d", abs(temp->data[0]), temp->data[1]);
+        temp = temp->next;
+    }
     printf("\n\n");
 }
 
