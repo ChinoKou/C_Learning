@@ -12,9 +12,9 @@ Info *list_merge (Info *list1, Info *list2);
 Info *list_create();
 
 int main(){
-    printf("输入第一条链表的学生成绩:");
+    printf("输入第一条链表的学生成绩:\n");
     Info *list1 = list_create();
-    printf("\n输入第二条链表的学生成绩:");
+    printf("\n输入第二条链表的学生成绩:\n");
     Info *list2 = list_create();
 
     printf("第一条升序单向链表中学生成绩如下:\n");
@@ -58,7 +58,7 @@ Info *list_create(){
     for (int i = 1; ; i++){
         temp = (Info*)malloc(sizeof(Info));
         temp->next = NULL;
-        printf("\n请输入第 %d 位学生的成绩: ", i);
+        printf("请输入第 %d 位学生的成绩: ", i);
         scanf("%lf", &(temp->mark));
         if (temp->mark < 0){
             free(temp);
