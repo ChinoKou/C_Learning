@@ -6,16 +6,15 @@ typedef struct StudentInformation{
     struct StudentInformation *next;
 }Info;
 
-void list_print(Info *head);
-void list_free(Info *head);
-void list_sort(Info *head);
+void list_print  (Info *head);
+void list_sort   (Info *head);
+Info *list_merge (Info *list1, Info *list2);
 Info *list_create();
-Info *list_merge(Info *list1, Info *list2);
 
 int main(){
     printf("输入第一条链表的学生成绩:");
     Info *list1 = list_create();
-    printf("输入第二条链表的学生成绩:");
+    printf("\n输入第二条链表的学生成绩:");
     Info *list2 = list_create();
 
     printf("第一条升序单向链表中学生成绩如下:\n");
@@ -27,9 +26,12 @@ int main(){
     printf("合并链表后:\n");
     list_print(list3);
 
-    list_free(list1);
-    list_free(list2);
-    list_free(list3);
+    Info *temp = list3;
+    while(temp != NULL){
+        list3 = temp->next;
+        free(temp);
+        temp = list3;
+    }
 }
 
 void list_print(Info *head){
@@ -39,12 +41,15 @@ void list_print(Info *head){
     printf("\n\n");
 }
 
-void list_free(Info *head){
-    Info *temp = head;
-    while(temp != NULL){
-        head = temp->next;
-        free(temp);
-        temp = head;
+void list_sort(Info *head){
+    for (Info *temp_1 = head; temp_1 != NULL; temp_1 = temp_1->next){
+        for (Info *temp_2 = temp_1; temp_2 != NULL; temp_2 = temp_2->next){
+            if (temp_1->mark > temp_2->mark){
+                double temp = temp_1->mark;
+                temp_1->mark = temp_2->mark;
+                temp_2->mark = temp;
+            }
+        }
     }
 }
 
@@ -65,18 +70,6 @@ Info *list_create(){
     }
     list_sort(list);
     return list;
-}
-
-void list_sort(Info *head){
-    for (Info *temp_1 = head; temp_1 != NULL; temp_1 = temp_1->next){
-        for (Info *temp_2 = temp_1; temp_2 != NULL; temp_2 = temp_2->next){
-            if (temp_1->mark > temp_2->mark){
-                double temp = temp_1->mark;
-                temp_1->mark = temp_2->mark;
-                temp_2->mark = temp;
-            }
-        }
-    }
 }
 
 Info *list_merge(Info *list1, Info *list2){
