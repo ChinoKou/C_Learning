@@ -41,6 +41,6 @@ void max_list(Info* head){
         if (max < temp->money) max = temp->money;
     }
     for (Info *temp = head; temp != NULL; temp = temp->next){
-        if (max == temp->money) printf("基本工资最高的是: %s, 工资为: %lf\n", temp->name, temp->money);
+        if (max == temp->money) printf("基本工资最高的是: %s, 工资为: %.1lf\n", temp->name, temp->money);
     }
 }
