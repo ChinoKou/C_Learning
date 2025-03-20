@@ -6,13 +6,13 @@ typedef struct Polynomial{
     struct Polynomial *next;
 }Polynomial;
 
-void        node_delete      (Polynomial *last);
-void        Polynomial_Sort  (Polynomial *node);
-void        Polynomial_Print (Polynomial *node);
-void        Polynomial_Free  (Polynomial *node);
+void node_delete(Polynomial *last);
+void Polynomial_Sort(Polynomial *node);
+void Polynomial_Print(Polynomial *node);
+void Polynomial_Free(Polynomial *node);
 Polynomial *Polynomial_Create();
-Polynomial *Polynomial_Add   (Polynomial polynomial_1, Polynomial polynomial_2);
-Polynomial *Polynomial_Minus (Polynomial polynomial_1, Polynomial polynomial_2);
+Polynomial *Polynomial_Add(Polynomial polynomial_1, Polynomial polynomial_2);
+Polynomial *Polynomial_Minus(Polynomial polynomial_1, Polynomial polynomial_2);
 Polynomial *Polynomial_Handle(Polynomial polynomial_1, Polynomial polynomial_2, int mode);
 
 int main(){
