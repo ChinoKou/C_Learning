@@ -17,7 +17,7 @@ int main(){
     printf("\n输入第二条链表的学生成绩:\n");
     Info *list2 = list_create();
 
-    printf("第一条升序单向链表中学生成绩如下:\n");
+    printf("\n第一条升序单向链表中学生成绩如下:\n");
     list_print(list1);
     printf("第二条升序单向链表中学生成绩如下:\n");
     list_print(list2);
