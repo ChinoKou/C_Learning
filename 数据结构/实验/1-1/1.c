@@ -84,7 +84,6 @@ Polynomial *Polynomial_Create(){
         temp->next = NULL;
         scanf("%d %d", &(temp->data[0]), &(temp->data[1]));
         if (head == NULL) head = temp;
-        else if (temp->data[0] == 0) continue;
         else tail->next = temp;
         tail = temp;
     }
