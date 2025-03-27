@@ -1,16 +1,17 @@
 #include <iostream>
-using namespace std;
 
 class class_test{
     private:
-    string m_name;
-    string m_id;
+    std::string m_name;
+    std::string m_id;
     int m_age;
     class_test *next;
 
+    static int count;
+
     public:
-    class_test(string name, string id, int age){
-        cout << "调用了" << age << "构造函数" << endl;
+    class_test(std::string name, std::string id, int age) {
+        std::cout << "调用了" << age << "构造函数" << std::endl;
         m_name = name;
         m_id = id;
         m_age = age;
@@ -24,20 +25,20 @@ class class_test{
     //     next = new class_test(*obj.next);
     // }
     ~class_test(){
-        cout << "调用" << m_age << "了析构函数" << endl;
+        std::cout << "调用" << m_age << "了析构函数" << std::endl;
     }
     void next_handle(class_test *node) {
         next = node;
     }
-    class_test *return_next(){
-        return next;
-    }
+    class_test *return_next() {return next;}
     void show();
 };
 
 inline void class_test::show(){
-    cout << "name: " << m_name << " id: " << m_id << " age: " << m_age << endl;
+    std::cout << "name: " << m_name << " id: " << m_id << " age: " << m_age << std::endl;
 }
+
+int class_test::count = 0;
 
 int main(){
     class_test *temp = nullptr, *head = nullptr, *tail = nullptr;
