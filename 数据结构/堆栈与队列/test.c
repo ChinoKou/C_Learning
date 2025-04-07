@@ -21,7 +21,7 @@ void InitQueue(LinkQueue *Q) {
 }
 
 // 入队操作
-void EnQueue(LinkQueue *Q, DataType x) {
+void QueueAppend(LinkQueue *Q, DataType x) {
     Node *head = Q->last->next; // 获取头结点
     Node *new_node = (Node *)malloc(sizeof(Node));
     new_node->data = x;
