@@ -1,41 +1,48 @@
+#include <stdio.h>
 #include <stdlib.h>
 
-typedef struct {
-    int *data;
-    int front;
-    int count;
-    int maxSize;
-} CircularQueue;
+typedef int DataType;
 
-CircularQueue* QueueCreate(int k) {
-    CircularQueue* queue = (CircularQueue*)malloc(sizeof(CircularQueue));
-    queue->data = (int*)malloc(sizeof(int) * k);
-    queue->front = 0;
-    queue->count = 0;
-    queue->maxSize = k;
-    return queue;
+typedef struct Node {
+    DataType data;
+    struct Node *next;
+} Node;
+
+typedef struct LinkQueue {
+    Node *last; // 尾指针，指向最后一个节点
+} LinkQueue;
+
+// 初始化队列
+void InitQueue(LinkQueue *Q) {
+    // 创建头结点
+    Node *head = (Node *)malloc(sizeof(Node));
+    head->next = head; // 头结点的next指向自身
+    Q->last = head;    // 尾指针初始指向头结点
 }
 
-int QueueAppend(CircularQueue* obj, int value) {
-    if (obj->count == obj->maxSize) return 0;
-    int last = (obj->front + obj->count) % obj->maxSize;
-    obj->data[last] = value;
-    obj->count++;
-    return 1;
+// 入队操作
+void EnQueue(LinkQueue *Q, DataType x) {
+    Node *head = Q->last->next; // 获取头结点
+    Node *new_node = (Node *)malloc(sizeof(Node));
+    new_node->data = x;
+    new_node->next = head;       // 新节点指向头结点
+    Q->last->next = new_node;    // 原尾节点指向新节点
+    Q->last = new_node;          // 更新尾指针
 }
 
-int QueueDelete(CircularQueue* obj) {
-    if (obj->count == 0) return 0;
-    obj->front = (obj->front + 1) % obj->maxSize;
-    obj->count--;
-    return 1;
-}
-
-int QueueGet(CircularQueue* obj) {
-    if (obj->count == 0) return -1;
-    return obj->data[obj->front];
-}
-
-int QueueIsEmpty(CircularQueue* obj) {
-    return obj->count == 0;
+// 出队操作
+DataType DeQueue(LinkQueue *Q) {
+    Node *head = Q->last->next; // 获取头结点
+    if (head->next == head) {   // 队列为空（头结点指向自身）
+        printf("Queue is empty, cannot dequeue.\n");
+        exit(1);
+    }
+    Node *temp = head->next;     // 要删除的队头节点
+    DataType data = temp->data;  // 保存数据
+    head->next = temp->next;     // 头结点跳过待删除节点
+    if (temp == Q->last) {       // 若删除的是尾节点（队列仅剩一个元素）
+        Q->last = head;          // 重置尾指针指向头结点
+    }
+    free(temp);                  // 释放节点
+    return data;
 }
