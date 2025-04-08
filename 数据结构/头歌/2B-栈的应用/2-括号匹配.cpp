@@ -123,12 +123,19 @@ void Bracket_Match(T* str, int len)
         else if (str[i] == ')' || str[i] == ']' || str[i] == '}') {
             T curr = Stack_Pop(stk);
             if (curr + 1 != str[i] && curr + 2 != str[i]) {
-                printf("NO");
-                return;
+                goto a;
             }
         }
+    }
+    if (!Stack_IsEmpty(stk)) {
+        a:
+        printf("NO");
+        return;
     }
     printf("YES");
     /********** End **********/
 }
 
+/*
+({ ( [][] ) []({}){}() (( (()) () )) () {[] [[[]]] } (){} (){} ()[] () [()] }( )
+*/
