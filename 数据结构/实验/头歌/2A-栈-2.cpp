@@ -61,7 +61,7 @@ bool LS_IsEmpty(LinkStack* ls)
 {
     // 请在这里补充代码，完成本关任务
     /********** Begin *********/
-    if (ls->len == 0) return true;
+    return ls->len == 0;
 
     /********** End **********/
 }
