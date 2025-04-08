@@ -46,7 +46,7 @@ bool SS_IsFull(SeqStack* ss)
 {
 	/*请在BEGIN和END之间实现你的代码*/
     /*****BEGIN*****/
-
+	return ss->top + 1 >= ss->max;
     /******END******/
 }
 
@@ -55,7 +55,7 @@ bool SS_IsEmpty(SeqStack* ss)
 {
 	/*请在BEGIN和END之间实现你的代码*/
     /*****BEGIN*****/
-
+	return ss->top < 0;
     /******END******/
 }
 
@@ -64,7 +64,7 @@ int SS_Length(SeqStack* ss)
 {
 	/*请在BEGIN和END之间实现你的代码*/
     /*****BEGIN*****/
-
+	return ss->top + 1;
     /******END******/
 }
 
@@ -73,7 +73,9 @@ bool SS_Push(SeqStack* ss, T x)
 {
 	/*请在BEGIN和END之间实现你的代码*/
     /*****BEGIN*****/
-
+	if (SS_IsFull(ss)) return false;
+	ss->data[++ss->top] = x;
+	return true;
     /******END******/
 }
 
@@ -82,7 +84,9 @@ bool SS_Pop(SeqStack* ss, T &item)
 {
 	/*请在BEGIN和END之间实现你的代码*/
     /*****BEGIN*****/
-
+	if (SS_IsEmpty(ss)) return false;
+	item = ss->data[ss->top--];
+	return true;
     /******END******/
 }
 
