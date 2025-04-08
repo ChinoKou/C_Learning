@@ -18,7 +18,7 @@ typedef struct SeqStack {
 
 typedef int T;
 
-/*创建一个栈*/
+/*创建一个栈
 SeqStack* SS_Create(int maxlen)
 {
 	SeqStack* ss=(SeqStack*)malloc(sizeof(SeqStack));
